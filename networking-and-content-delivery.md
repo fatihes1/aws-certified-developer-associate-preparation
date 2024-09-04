@@ -117,7 +117,7 @@ NACL'ler üzerine bilgi birikimimiz olduğuna göre, sonraki başlıkta security
 
 Güvenlik konusunda devam ederek, şimdi de security group'lara yakından bakalım. Security group'lar, hem gelen hem de giden trafiği filtreledikleri için network access controller'lara oldukça benzerler. Ancak NACL'ler subnet seviyesinde çalışırken, security group'lar instance seviyesinde çalışır.
 
-Yukarıdaki şemayı göz önüne alarak, diyelim ki üç private subnet'imiz bulunuyor. Her birinin IP adresleri olmalıdır, ilki için 10.0.1.0/24 tanımlayalım. Sırasıyla iki ve üçüncü subnet için değerlerimiz ise 10.0.2.0/24 ve 10.0.3.0/24 olsun. Sonrasında senaryomuzu detaylandıralım, ilk subnet'te EC2 instance'ları olsun. İkinci subnet'te MySQL veya Aurora çalıştıran RDS instance'ları olabilir ve son subnet'te de yine EC2 instance'larının olduğu bir senaryo düşünelim.
+Aşağıdaki şemayı göz önüne alarak, diyelim ki üç private subnet'imiz bulunuyor. Her birinin IP adresleri olmalıdır, ilki için 10.0.1.0/24 tanımlayalım. Sırasıyla iki ve üçüncü subnet için değerlerimiz ise 10.0.2.0/24 ve 10.0.3.0/24 olsun. Sonrasında senaryomuzu detaylandıralım, ilk subnet'te EC2 instance'ları olsun. İkinci subnet'te MySQL veya Aurora çalıştıran RDS instance'ları olabilir ve son subnet'te de yine EC2 instance'larının olduğu bir senaryo düşünelim.
 
 ![dOEvciu.md.png](https://iili.io/dOEvciu.md.png)
 
