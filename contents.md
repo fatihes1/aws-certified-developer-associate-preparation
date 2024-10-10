@@ -4,9 +4,9 @@
 - 🗂️ DVA-C02 Kurs Tanıtımı
 	- 📁 [Sıvav Yapısı](./exam-logistics.md)
 - 🗂️ [Compute](./compute.md)
-	- 📁 [AWS'de (compute) hesaplama nedir?](./comute.md#awsde-compute-hesaplama-nedir)
-	- 📁 [Amazon EC2: Elastic Compute Cloud](./comute.md#amazon-ec2-elastic-compute-cloud)
-		- 📄 [AMI : Amazon Machine Images](./comute.md#ami--amazon-machine-images)
+	- 📁 [AWS'de (compute) hesaplama nedir?](./compute.md#awsde-compute-hesaplama-nedir)
+	- 📁 [Amazon EC2: Elastic Compute Cloud](./compute.md#amazon-ec2-elastic-compute-cloud)
+		- 📄 [AMI : Amazon Machine Images](./compute.md#ami--amazon-machine-images)
 		- 📄 [Instance Türleri (Instance Types)](./compute.md#instance-türleri-instance-types)
 		- 📄 [Instance Satın Alma Seçenekleri (Instance Purchasing Options)](./compute.md#instance-satın-alma-seçenekleri-instance-purchasing-options)
 		- 📄 [Kiralama (Tenancy)](./compute.md#kullanıcı-verileri-user-data)
