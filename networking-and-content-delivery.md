@@ -498,6 +498,7 @@ Latency, integration latency ve diğer API Gateway yükünü içerir. Integratio
 HTTP ve REST API'ler arasındaki farkı tartışmış olsak da, mimarileriniz için belirleyici olabilecek daha spesifik bazı noktalara geri dönelim. Daha önce tartıştığımız gibi, API'nizin yetkilendirmesine baktığınızda, REST API kullanırken Native OpenIDConnect / OAuth 2.0 kullanamayacaksınız. Ancak, Cognito'nun farklı bir şekilde de olsa bu boşluğu doldurabileceğini düşünüyoruz. Entegrasyon potansiyeline baktığımızda, REST API Application Load Balancer veya Cloud Map ile özel entegrasyon sağlayamıyor. Bunun için alternatifler vardır.
 
 ![decspgR.md.png](https://iili.io/decspgR.md.png)
+
 İşte AWS'nin bu konuda önerisi: "Özel Application Load Balancer'lar için, önce özel bir Network Load Balancer'a bağlanmak için API Gateway'in VPC linkini kullanın. Ardından, API Gateway isteklerini özel Application Load Balancer'a iletmek için Network Load Balancer'ı kullanın." Yani direkt olarak çalışmasa da, bir sürüm sonrasında çalışmasını zorlayabilirsiniz.
 
 API Yönetimi konusunun çok kısa da olsa üzerinden geçtik. Ancak bazı insanlar gerçekten burada bir seçim yapmak zorunda kalabilir. API'niz o API Anahtarlarına ve kullanım planlarına ihtiyaç duyacaksa, şimdilik REST API'yi kullanmak zorundasınız. Ek olarak, HTTP API ile özel bir alan adı kullanmak için bir uyarı bulunmaktadır. Bu uyarı da TLS 1.2'nin desteklenen tek TLS sürümü olmasıdır.  API'nizin gelen isteklerin body değerini  değiştirme yeteneğine ihtiyacı varsa, REST API kullanmanız gerekir.

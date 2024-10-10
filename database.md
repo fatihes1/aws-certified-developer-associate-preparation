@@ -361,10 +361,11 @@ DynamoDB tablosu oluşturmadan önce veri yapınızı ve beklenen erişim modell
 ```
 
 Yukarıdaki veri yapısını düşünün. Bu, her şarkının bir item olarak temsil edildiği bir müzik kütüphanesini temsil eder. 
+
 |  | SQL DBs | DynomoDB |
-|--|--|--|--|
-| Data Storage | Rows and Columns | Items and Attibutes
-|Schemas | Fixed| Dynamic  |
+|--|--|--
+| Data Storage | Rows and Columns | Items and Attibutes |
+|Schemas | Fixed| Dynamic |
 |Querying|Using SQL| Item Collectios  |
 
 
