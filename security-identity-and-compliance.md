@@ -443,7 +443,7 @@ Kullanıcının uygulamanızda gerçekleştirdiği işlemlerin ayrıca oluşturd
 
 CUP Token, Identity Pool'a gönderilebilir, burada CUP token'ınıza dayalı olarak bir STS Token (Security Token Service) oluşturulacak ve bu uygulamanıza geri gönderilecektir. Bu AWS credential'ları ile uygulamanızın artık diğer AWS servislerini çağırmasına izin verilecektir. Bu credential'lar, Identity Pool içindeki kullanıcılarınızla ilişkilendirdiğiniz bir AWS role'üne bağlı olacaktır.
 
-### Anazon Cognito Sync
+### Amazon Cognito Sync
 
 Amazon Cognito, web ve mobil uygulama geliştiricilerinin sıklıkla karşılaştığı bir soruya çözüm sunuyor: uygulama kullanıcı verilerini çeşitli platformlar arasında nasıl senkronize edebiliriz?
 
