@@ -6,7 +6,7 @@ Ben Fatih Es, 2023 yılından bu yana AWS Certified Solutions Architect – Asso
 
 AWS Certified Developer - Associate sertifikası, AWS hizmetlerini kullanarak uygulamalar geliştirme, test etme, dağıtma ve hata ayıklama konusunda bilgi ve aynı zamanda deneyime sahip bir geliştirici rolündeki bireyler için tasarlanmıştır. AWS, bu sınava girecek adayların AWS hizmetlerini kullanarak uygulama geliştirme ve bakım yapma konusunda en az 1 yıllık gerçek hayat deneyime sahip olmasını önermektedir. Bu repo, Şubat 2023'te yayımlanan AWS Certified Developer - Associate sertifikasyon sınavının (DVA-C02) en son sürümüne hazırlanırken ihtiyaç duyacağınız bilgileri size sağlamayı hedeflemektedir.
 
-Doğruca içindekiler alanında gitmek için [buraya tıklayınız](./contents)
+Doğruca içindekiler alanında gitmek için [buraya tıklayınız](./contents.md)
 
 Sertifikasyon dört farklı alanına ayrılmıştır:
 
