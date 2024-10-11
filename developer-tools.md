@@ -168,13 +168,16 @@ Version control, geliştiricilerin tek bir proje üzerinde işbirliği yapmasın
 
 Farklı Version Control System türleri bulunur ve her tür için farklı araçlar mevcuttur. Çoğunlukla Distributed Version Control Systems konusuna değineceğiz ve özellikle Git'ten bahsedeceğiz. Git'ten bahsetmemizin nedeni, günümüzde çok yaygın kullanılması ve bilmenin değerli olmasıdır.
 
-![dZC1UlI.md.png](https://iili.io/dZC1UlI.md.png)
+![](./assets/developer-tools/developer-tools-1.png)
+
 Bahsettiğimiz gibi, farklı Version Control System türleri bulunur. Yıllar önce Local Version Control ile başladık. Kodda değişiklik yapmak isteyen herkesin kodun bulunduğu sunucuya bağlanması ve orada düzenlemesi gerekiyordu, sonra değişikliklerini o sunucudaki Version Control System'e kaydedebiliyorlardı. Çoğunlukla, bu tür Local Version Control günümüzde kullanılmıyor.
 
-![dZCGgun.md.png](https://iili.io/dZCGgun.md.png)
+![](./assets/developer-tools/developer-tools-2.png)
+
 Sonrasında, client-server modeline geçtik, buna ayrıca centralized model de denir. Burada kod bir ana sunucuda bulunur ve geliştiriciler onu kendi bilgisayarlarına çeker yani pull eder. Sonra değişiklik yapabilir ve geri gönderebilirler. Bunu bir kütüphane gibi düşünün. SVN ve Team Foundation Version Control gibi araçlar Centralized Version Control'e örnektir. Bu model hala günümüzde yaygın olarak kullanılmaktadır. Bu model, sunucunun yalnızca belirli kullanıcıların kaynak koda erişmesine izin verecek şekilde yapılandırılmasına olanak tanır ve oldukça ayrıntılı erişim kontrolüne izin verir, bu da özellikle denetim ve uyumluluk nedenleriyle faydalı olabilir.
 
-![dZCVNdN.md.png](https://iili.io/dZCVNdN.md.png)
+![](./assets/developer-tools/developer-tools-3.png)
+
 Daha önce de değindiğimiz gibi Distributed Version Control Systems'i kullanmaya başladık. Client-server modelinde, bir dosyanın belirli bir sürümünü görmek istediğinizde, bunu istemek için bir istemci aracı kullanırdınız ve sunucu, erişiminiz varsa, bunu size gönderirdi. Distributed model biraz farklıdır. Distributed'da, projenin tüm geçmişi yerel olarak elinizde bulunur. Bir repository'yi klonladığınızda, her şeye erişiminiz olur. Ayrıca bu modelde, kod tabanının tek bir merkezi versiyonuna ihtiyaç yoktur. Örneğin, değişikliklerinizi kendi ortamınızdan iş arkadaşınıza gönderebilir ve onlar da değişikliklerini size geri gönderebilir.
 
 Şimdi bu tipik bir kullanım senaryosu değil, ancak Distributed Version Control Systems'in esnekliği sayesinde mümkündür. Tipik bir kullanım senaryosu, kanonik kaynak olarak kabul edilen şeyi içeren merkezi bir sunucuya sahip olmaktır ve bu şekilde kullanıldığında, biraz centralized model gibidir. Git ve Mercurial, Distributed Version Control Systems'e örnektir.
@@ -513,9 +516,9 @@ Toggle'lar hakkında son bir not, eğer toggle'ları kullanacaksanız, tüm togg
 
 Sırada **inversion of control**'a bakalım ve neden kodumuzun continuous delivery'ye daha uygun hale gelmesine yardımcı olduğunu inceleyelim. Inversion of control, kodunuzun modülerliğini artırmak için bir mekanizmadır. Amacı, bir bileşeni aynı arayüzü paylaşan diğer bileşenlerle değiştirebilmenizi sağlamak, böylece ihtiyaç duyduğunuzda bileşenleri değiştirebilirsiniz. Kodunuz ne kadar modüler olursa, o kadar test edilebilir olur. Ayrıca, genellikle sadece değişen şeyleri test etmek daha kolay olur. Inversion of control'ün birçok farklı uygulaması vardır, ancak hepsi kodunuzu daha modüler hale getirerek size yardımcı olur.
 
-![dZlCOAP.md.png](https://iili.io/dZlCOAP.md.png)
 
-IOC'ye (Inversion of Control'ün kısaltması) dependency injection pattern üzerinden genel bir bakış atalım. Yukarıdaki görselde, dosya depolamayla ilgilenen bazı yazılım modüllerimiz olduğunu görebilirsiniz. AWS için bir tane, Azure için bir tane, Google Cloud Storage için bir tane ve bir tane de In-Memory Storage bulunuyor. Bununla beraber, hepsi aynı generic file storage arayüzüne dayanarak oluşturulmuş. Bu, bunların herhangi bir zamanda değiştirilebilmesini sağlıyor. Ayrıca çekirdek uygulamamız bulunuyor ve uzak dosya depolamayı kullanabilmesi gerekiyor. Eğer bunu kullanmak için hard-coding yapsaydık veya hatta koşullu olarak bu depolama modüllerinden herhangi birini kullanabilecek şekilde yapsaydık, testi daha zor hale getirirdik.
+
+IOC'ye (Inversion of Control'ün kısaltması) dependency injection pattern üzerinden genel bir bakış atalım. Dosya depolamayla ilgilenen bazı yazılım modüllerimiz olduğunu düşünelim. AWS için bir tane, Azure için bir tane, Google Cloud Storage için bir tane ve bir tane de In-Memory Storage bulunuyor. Bununla beraber, hepsi aynı generic file storage arayüzüne dayanarak oluşturulmuş. Bu, bunların herhangi bir zamanda değiştirilebilmesini sağlıyor. Ayrıca çekirdek uygulamamız bulunuyor ve uzak dosya depolamayı kullanabilmesi gerekiyor. Eğer bunu kullanmak için hard-coding yapsaydık veya hatta koşullu olarak bu depolama modüllerinden herhangi birini kullanabilecek şekilde yapsaydık, testi daha zor hale getirirdik.
 
 Ancak, uygulamamıza sadece generic file storage interface'ini uygulayan bir modül beklemesi gerektiğini söylersek, ihtiyaç duyduğumuzda implementasyonu değiştirebiliriz. Bu, genişletilebilirlik açısından çok değerlidir çünkü aynı interface'i uyguldukları sürece dosya depolamayı yönetmek için yeni modüller oluşturabiliriz. Ve tüm bu modüller interface seviyesinde aynı şekilde davranması gerektiğinden, onları tek tip bir şekilde test edebiliriz. Bu aynı zamanda kodumuzun test edilebilir şekilde yazıldığından emin olmamızı sağlar. Gerçek bir modülü aynı interface'i kullanacak şekilde oluşturulmuş sahte bir versiyonla değiştirebildiğinizde unit test'ler makul ölçüde basit hale gelir. Dolayısıyla in-memory versiyonu kullanmak, oldukça hızlı bir şekilde unit test yapmamıza olanak tanır. Bu nedenle inversion of control, modüler kod yapmanın bir yoludur ve modüler kod üzerinde çalışmak ve test etmek daha kolaydır.
 
@@ -644,7 +647,7 @@ Bu başlık altında, deployment stratejilerine göz atacağız. Blue/green depl
 
 **Blue-green deployment** stratejisi downtime'ı minimize ederek yeni sürümleri deploy etmeye yardımcı olur. Nasıl çalıştığı ise temelde şu şekildedir: Bu belirli bir cloud sağlayıcısına özgü bir strateji değildir. Bu pattern'i hemen hemen herhangi bir cloud platformuyla uygulayabilirsiniz. 
 
-![dtduTFa.md.png](https://iili.io/dtduTFa.md.png)
+![](./assets/developer-tools/developer-tools-4.png)
 
 Green ve blue adında iki ortamınız bulunuyor. Bu ortamlardan hangisinin live olduğunu seçmek için, hangisine trafik göndereceğine bağlı olarak bir tür yönlendirme mekanizmanız da yerini almış durumda.
 
@@ -656,7 +659,7 @@ Diyelim ki şu anda green live ve en son değişikliklerinizi deploy etmek istiy
 
 Canary deployments adını, kömür madencilerinin kanaryaları madenlere götürme uygulamasından alır. Kanaryalar, karbon monoksit gibi zehirli gazların etkilerine daha duyarlı oldukları için madenciler için erken uyarı sistemi görevi görürler. Kanarya mutlu ve sağlıklıyken, madenciler karbon monoksit zehirlenmesi riski altında değildi. Ancak, karbon monoksit gazları mevcutsa, kanarya bu etkilere yenik düşer ve ne yazık ki ölürdü. Bu durumda, madencileri tehlikeye karşı uyarırdı. Bu ne kadar üzücü olsa da, bu küçük kahramanlar tehdidi erken tespit eder ve potansiyel olarak birçok hayat kurtarırdı.
 
-![dtdGMlV.md.png](https://iili.io/dtdGMlV.md.png)
+![](./assets/developer-tools/developer-tools-5.png)
 
 Adını aldığı uygulama gibi, bu deployment stili de sorunları erken tespit etmekle ilgilidir. Canary deployments, uygulamanın küçük sayıda kullanıcıya yayılmasını gerektirir. Bununla beraber, bu kullanıcı grubunu siz seçersiniz. Rastgele bir örnekleme olabilir veya belirli bir grup olabilir. Ancak, nasıl bölerseniz bölün, küçük bir grupla başlarsınız. Ardından herhangi bir sorun olup olmadığını kontrol ederek kullanımı izlersiniz. Sonuçta, bu yöntemin doğası gereği bir erken uyarı sistemi olması gerekmektedir.
 
@@ -1049,7 +1052,7 @@ resources:
 			CurrentVersion: "1"
 			TargetVersion: "2"
 hooks:
-	- BeforAllowTraffic:
+	- BeforeAllowTraffic:
 		"LambdaFunctionToValidateBeforeTrafficShift"
 	- AfterAllowTraffic:
 		"LambdaFunctionToValidateAfterTrafficShift"
@@ -1065,7 +1068,7 @@ resources:
 	- TargetService:
 		Type: AWS::ECS::Function
 		Properties:
-			TaskDefination:
+			TaskDefinition:
 				"arn:aws:ecs:us-east-1:1112222233334444:task-defination/my-task-defination-family-name:1"
 			LoadBalancerInfo:
 				ContainerName: "SampleApplicationName"
@@ -1073,9 +1076,9 @@ resources:
 # Optional properties
 			PlatformVersion: "LATEST"
 			NetworkConfiguration:
-				AwsvpcConfifuration:
+				AwsvpcConfiguration:
 					Subnets: ["subnet-1234abcd", "subnet-5678abcd"]
-					SecurityGrpups: ["sg-12345678"]
+					SecurityGroups: ["sg-12345678"]
 					AssignPublicIp: "ENABLED"	
 ```
 
@@ -1166,7 +1169,7 @@ CodeStar proje dashboard'unu ve durumunu görüntüleme yeteneği her üç rol t
 
 **Contributor** rolü, önceki rolle aynıdır, ancak ekip üyelerini ekleme/kaldırma ayrıcalığı ve projeyi silme ayrıcalığı yoktur. **Viewer rolü**, CodeStar içindeki en az ayrıcalıklı roldür ve sadece CodeStar proje dashboard'unu ve durumunu görüntüleme yeteneğine sahiptir.
 
-![dtGOWru.md.png](https://iili.io/dtGOWru.md.png)
+![](./assets/developer-tools/developer-tools-6.png)
 
 Üstteki şemada üç CodeStar ekip rolü arasındaki farklılıkları görebiliriz.
 
@@ -1180,11 +1183,20 @@ AWS X-Ray ile, ölçekli olarak çalışan dağıtık sistemler arasında operas
 - Performans darboğazlarını ve kritik noktaları bulmanıza olanak tanıyan gruplama ve filtreleme özelliklerini destekler. 
 - Son olarak, servis istisnalarını ve hatalarını derinlemesine incelemenize ve tam olarak belirlemenize olanak tanır.
 
+<div align="center">
+
 ![dtMCO0v.md.png](https://iili.io/dtMCO0v.md.png)
+
+</div>
+
 
 AWS X-Ray'in bir ortamda nasıl dağıtıldığı ve yapılandırıldığı ile telemetri veya iz verilerinin nasıl toplandığı ve AWS X-Ray servisine nasıl yayınlandığı konusunda daha derinlemesine bakalım. Yukarıdaki diyagramdan görebileceğiniz gibi, mesaj iz verileri uygulamanızın içinden ve mesajın aktığı diğer her uygulama servisinden toplanır. Uygulama kodunuzun uygun AWS X-Ray SDK ile donatılması gerekir. Bu işlem, iz veri çıkarımını ve korelasyonunu uygular. İlgili iz verileri gruplandırılır ve internet üzerinden toplanma ve analiz için AWS X-Ray servisine yayınlanır. Buradan itibaren, toplanan telemetriyi AWS X-Ray servis konsolunda görüntüleyerek ve gezinerek görselleştirmeye başlayabilirsiniz.
 
+<div align="center">
+
 ![dtM07yX.md.png](https://iili.io/dtM07yX.md.png)
+
+</div>
 
 AWS X-Ray servisi aşağıdaki temel bileşenlerden oluşur:
 
@@ -1204,13 +1216,21 @@ AWS X-Ray konsolundaki iz listesi, URL, yanıt kodu veya iz özetindeki diğer v
 
 AWS X-Ray şu anda aşağıdaki üç SDK'yı desteklemektedir. Her biri ayrı ayrı ilgili çevrimiçi paket yönetimi repolarından edinilebilir: Java (Maven'dan), Node.js (npm'den) ve .NET (NuGet'ten). AWS'nin zaman içinde daha yeni dile özgü X-Ray SDK'ları sunması beklenmektedir.
 
+<div align="center">
+
 ![dtM1UWG.md.png](https://iili.io/dtM1UWG.md.png)
+
+</div>
 
 AWS X-Ray SDK'yı uygulamanıza implement etmek, gelen ve giden istekleri toplamanıza ve izlemenize olanak tanır. Veri noktaları, verileri gruplandıran ve periyodik olarak AWS X-Ray servisine ileten yerel X-Ray daemon'a iletilir. Örneğin, yukarıdaki Node.js uygulaması Node.js X-Ray SDK ile donatılmıştır. Kalın yazılmış dört satır, gerçek X-Ray donatımını göstermektedir. İlk kalın satır X-Ray SDK'yı içe aktarır. İkinci kalın satır örnekleme toplama kural setlerini yapılandırır. Üçüncü kalın satır X-Ray'e diğer servislere yapılan tüm downstream HTTPS çağrılarını kontrol etmesini söyler. Dördüncü satır X-Ray'e "calculator" adlı yeni bir segment açmasını söyler. Bir sonraki bölümde segmentler hakkında daha fazla bilgi öğreneceğiz.
 
 Yani, sadece dört satır kodla Node.js uygulamamıza eklemiş olduk ve bu X-Ray'in veri toplamaya başlaması için yeterli olacaktır. Bu işlem, çok hafif bir işlemdir ve çok hızlı bir şekilde entegre etmenize olanak tanır.
 
-![dtMMoHN.md.png](https://iili.io/dtMMoHN.md.png)
+<div align="center">
+
+![](./assets/developer-tools/developer-tools-7.png)
+
+</div>
 
 AWS X-Ray daemon, UDP Port 2000'de trafiği dinleyen bir uygulamadır. Ham segment verilerini toplar, gruplandırır ve periyodik olarak AWS X-Ray API'sine iletir. Varsayılan olarak, X-Ray daemon port 2000'i dinler ancak bu yeniden yapılandırılabilir. Güvenlik açısından, X-Ray daemon'un izleme verilerini AWS X-Ray API'sine yayınlamak için yetkilendirme yapmak üzere izinlerle kurulması gerekir. X-Ray daemon'un çalışma zamanında kullandığı kimlik bilgileri, daemon bir EC2 örneğine dağıtıldığında bir IAM rolü sağlanarak veya daemon EC2 dışı bir ortamda dağıtıldığında AWS erişim anahtarı kimliği ve AWS gizli erişim anahtarı için ortam değişkenleri ayarlanarak oluşturulabilir.
 
