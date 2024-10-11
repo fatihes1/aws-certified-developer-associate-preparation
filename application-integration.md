@@ -126,7 +126,7 @@ Olaylarla ilgilenen ve event bridge'den bilgi alan uygulamalar yazarken, kullana
 
 Örneğin, bir müşteri inceleme olayı her zaman iki string içerebilir: biri müşteri adı için, diğeri incelemenin kendisi için.
 
-![dyMMUru.md.png](https://iili.io/dyMMUru.md.png)
+![](./assets/application-integration/application-integration-1.jpg)
 
 Eventbridge, hizmetin içine yerleştirilmiş bir şema kaydına sahiptir;  event bus'ınızda mevcut olan tüm olası şemaları görebilirsiniz. Geliştirmenizi kolaylaştırmak için, event bridge'de kullanılabilen her AWS hizmetinin bu kayıtta arayabileceğiniz önceden oluşturulmuş bir şeması vardır.
 
@@ -251,7 +251,7 @@ Daha sonra etiketlerimizi oluşturmak ve paralel olarak bir küçük resim oluş
 
 Son olarak, rekotag'ları görüntünün kendisine veya bir veritabanına ekler ve daha sonra ilişkilendiririz. Bu aşamadan sonra sonra durum makinesi sona erer.
 
-![dyV5ogV.md.png](https://iili.io/dyV5ogV.md.png)
+![](./assets/application-integration/application-integration-2.jpg)
 
 Şimdiye kadar Step Functions ile görevler gerçekleştirirken etkileşim ortamınız olarak Lambda'yı kullanmaktan çok bahsettik, ancak aslında Step Functions'ın doğrudan etkileşimde bulunabileceği oldukça fazla hizmet bulunur. Yukarıdaki tabloya bakarsanız, Step Functions'ın kullanmanız için oldukça geniş bir hizmet yelpazesine sahip olduğunu görebilirsiniz.
 
@@ -274,7 +274,7 @@ Artık AWS Step Functions'ın ne olduğu ve onu oluşturan parçalar hakkında t
 
 Bu muhtemelen en sevilen örnek ve AWS Step Functions, AWS Elemental MediaConvert ve AWS Elemental MediaPackage'ı kullanan eksiksiz bir isteğe bağlı video iş akışıdır. Repo'ya şu linten ulaşılabilir. [https://github.com/awslabs/video-on-demand-on-aws](https://github.com/awslabs/video-on-demand-on-aws)
 
-![dyV4cGe.md.png](https://iili.io/dyV4cGe.md.png)
+![](./assets/application-integration/application-integration-3.jpg)
 
 Yukarıdaki mimari diyagram, isteğe bağlı bir video hizmetinin tüm yaşam döngüsünü ele alan üç parçalı, çok yönlü bir mimariyi temsil etmektedir.
 
@@ -284,7 +284,8 @@ S3 bucket'ımızda zaten kurulmuş olabilecek veya geldikçe oraya yerleştirile
 
 Hadi ingest iş akışına bir göz atalım ve ne yaptığını görelim.
 
-![dyVLVQ2.md.png](https://iili.io/dyVLVQ2.md.png)
+![](./assets/application-integration/application-integration-4.jpg)
+
 **Input validation:** Dosya türlerinin desteklendiğinden emin olmak için kontrol eder.
 
 **Mediainfo:** Kaynak dosyalar için imzalı URL'ler oluşturur ve video hakkındaki metaverileri çıkarır.
@@ -309,7 +310,7 @@ Ayrıştırılmış bir uygulama, her bileşenin görevlerini bağımsız olarak
 
 Ayrıştırma olasılığı, farklı katmanlar tarafından mesajların gönderilip alınabileceği bir mesajlaşma mekanizması tanıtılarak ortaya çıkar. İdeal olarak, mesajlaşma modeli bire bir mesaj iletimi olmalıdır ve bu bir mesaj mevcut bir katman tarafından oluşturulur. Bu mesaj bir kuyruğa konur ve ardından bir sonraki işlem katmanı tarafından alınır. **Amazon Simple Queue Service** yani **SQS**, bu tür bir uygulama için uygundur, farklı uygulama katmanları için bir e-posta sistemi gibi davranır ve işleme için isteği almak üzere dinleyen tüketici olmasa bile alınan mesajın bir kopyasını saklayabilir. Uygulamayı aşağıda verilen bir diyagram kullanarak temsil edebiliriz. Biraz farklı, çünkü bizim durumumuzda her katman arasına bir kuyruk entegre ediyoruz. Bu özel uygulamada Amazon SQS kullanacağız ve uygulama katmanlarının her birini otomatik ölçeklendirme grupları içindeki EC2 örnekleri filosu olarak uygulayacağız.
 
-![dyWh3Cl.md.png](https://iili.io/dyWh3Cl.md.png)
+![](./assets/application-integration/application-integration-5.jpg)
 
 Her işlem ve katman arasında SQS kuyrukları kullanarak, artık katmanlar arasında istekleri aktarmak için mesaj alışverişi yapan sistemlerin gevşek bir şekilde bağlanmasını sağlarız. Bu, sistemlerin asenkron bağlantısıdır ve mesajları paralel olarak alan ve işleyen EC2 örneklerinin sayısını artırmanıza veya azaltmanıza olanak tanır. Ayrıca, kullanım ve talebe göre her uygulama katmanı filosunun boyutunu büyütmek ve küçültmek için otomatik ölçeklendirmeyi yapılandırabilirsiniz. Bir EC2 örneği bir mesajı işleyemezse, ilgili kuyruğda tutulur ve EC2 örneğinin restorasyonu üzerine veya aynı otomatik ölçeklendirme grubundaki başka bir EC2 örneği tarafından alınır. Bu durumda Amazon SQS, farklı uygulama katmanları için bir e-posta sisteminin eşdeğeri gibi davranır. Genel olarak SQS için, bir posta kutusunun (mailbox) eşdeğerine kuyruk denir. Kuyruğa mesaj koyan uygulamalara producer, mesajları alan uygulamalara ise consumer denir.
 
@@ -345,7 +346,7 @@ JSON policy, subscriber'a hangi mesajların iletileceğini tanımlayan özniteli
 
 Mesaj iletimi yeniden deneme policy'si tükendiğinde, Amazon SNS mesajı bir dead-letter queue'ya taşıyabilir. Daha önce değindiğimiz gibi, dead-letter queue, bir Amazon SNS subscription'ının subscriber'lara başarıyla iletilemeyen mesajlar için hedefleyebileceği bir Amazon SQS queue'dur. Client hataları veya server hataları nedeniyle iletilemeyen mesajlar, daha fazla analiz veya yeniden işleme için dead-letter queue'da tutulur. Şimdi bu iki messaging servisini yan yana karşılaştıralım. Amazon SNS, uygulamaların zaman açısından kritik mesajları bir push mekanizması aracılığıyla birden çok subscriber'a göndermesine olanak tanır; Amazon SQS, mesajları bir polling modeli aracılığıyla değiş tokuş eder, gönderme ve alma bileşenleri birbirinden ayrılmıştır. Amazon SQS, uygulamaların dağıtılmış bileşenlerinin her bileşenin eşzamanlı olarak kullanılabilir olmasını gerektirmeden mesaj göndermesi ve alması için esneklik sağlar. Bu, mesaj persistency özelliği ve decoupling mekanizması nedeniyledir. Birden çok SQS queue'suna aynı mesajları göndermek için süreç şöyledir: Birincisi, SNS kullanarak bir topic oluşturun, ardından SNS topic'ine birden çok SQS queue'su oluşturmalı ve abone olmalısınız.
 
-![dyhZJ4V.md.png](https://iili.io/dyhZJ4V.md.png)
+![](./assets/application-integration/application-integration-6.jpg)
 
 SNS topic'ine bir mesaj gönderildiğinde, mesaj SQS queue'larına yayılacaktır. SNS, mesajı topic'e abone olan tüm SQS queue'larına iletecektir. Ayrıca mesaj her queue'ya yerleştirildikten sonra, bu gerektiğinde herhangi bir polling uygulamasını tetikleyebilir. Diyagram formundaki süreç ekranınızda gösterildiği gibi görünecektir. Bu durum, SNS ve SQS'i birleştiren temel fan-out uygulamanızdır. Bu temel parçada, üç queue da notification'lar için topic'e abone olur ve gerekli görüntü işlemeyi göndermek için aynı mesaj üçüne de yayınlanır. Bu senaryoyu genişletebilir ve mevcut bir görüntü işleme uygulamasına fan-out kısmını dahil edebiliriz. Kullanıcı görüntüyü yükler ve ardından belirlenmiş bir SNS topic'ine gerekli mesajı gönderen bir function'ı manuel olarak tetikler. Bu, iş akışının geri kalanını başlatacaktır.
 
