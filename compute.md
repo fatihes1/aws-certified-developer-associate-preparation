@@ -479,7 +479,7 @@ Bu başlık altında, Elastic Beanstalk'ın hem web hem de çalışma ortamları
 **Temel sağlık raporlamasıyla (basic health reporting)** başlayalım. İsimlerinden de anlayacabileceğimiz gibi, temel sağlık raporlaması, gelişmiş sağlık raporlaması ve izleme (enhanced health reporting and monitoring) kadar ayrıntılı ölçümler sağlamaz. Ancak yine de ortamınızın nasıl performans gösterdiğine dair yüksek düzeyde bir genel bakış sunan bilgi ve veri sağlar. Ortamınızda çalışan herhangi bir kaynak beş dakikalık aralıklarla Amazon CloudWatch'a metrikler gönderecektir. Bu metrikler çeşitli kaynakları kapsar. Örneğin, bir web katmanı (web tier) çalıştırıyorsanız, EC2 veya ELB istek oranları hakkında metrikler içerecektir. Bir çalışan katmanında (work tier) çalışıyorsanız, SQS ile ilişkili metrikleriniz olacaktır. Ancak, toplanan bu CloudWatch metrikleri, ortamın ne kadar sağlıklı olduğunu belirlemek için kullanılmaz. Ortamın sağlığı aslında birazdan açıklayacağımız gibi diğer kontrollerle belirlenir. Ve bu kontrollerin sonuçları, Elastic Beanstalk panosunda dört farklı renkle sunulur.
 
 
-![dRUkOJ9.md.png](https://iili.io/dRUkOJ9.md.png)
+![](./assets/compute/compute-1.png)
 
 Elastic Load Balancer kullanan bir ortam için, genellikle bir web katmanı (web tier), ELB her 10 saniyede bir Auto Scaling grubundaki her instance'ına bir sağlık kontrolü isteği gönderir ve sağlığını onaylamak için bir yanıt bekler. Bir yanıt alınırsa, instance sağlıklı kabul edilir. Örneğin, tek bir instyance veya çalışan katmanı (worker tier) olan bir ortam gibi yani herhangi bir ELB'si olmayan ortamlar için, instance'nin sağlığı EC2 instance durum kontrolü tarafından belirlenir.
 
@@ -489,7 +489,7 @@ Bu durum kontrolleri EC2 tarafından kontrol edilir ve EC2 instance'nizin durumu
 
 Elastic Beanstalk ayrıca kırmızı olarak tanımlanmış olabilecek diğer kaynaklarınızın da yüksek düzeyde izlenmesini sağlar. Elastic Beanstalk, bir web ortamında, bir auto Ssaling grubu kullanılıyorsa, operasyonel olduğundan ve sağlıklı olan minimum bir instance'ın çalıştığından emin olacaktır. Ayrıca Route 53'teki doğru ayarların kullanıldığından, CNAME değerinin doğru ELB'ye yönlendirildiğinden emin olacaktır. Son olarak, EC2 instance'leriniz için güvenlik grubunun 80 numaralı bağlantı noktasına gelen trafiğe izin verdiğini kontrol edecektir. Ayrıca, çalışma ortamları için Elastic Beanstalk kullanılan SQS kuyruğunun minimum üç dakikada bir çekildiğinden emin olacaktır.
 
-![dRUr3og.md.png](https://iili.io/dRUr3og.md.png)
+![](./assets/compute/compute-2.png)
 
 Şimdi **gelişmiş sağlık raporlaması ve izlemeye (enhanced health reporting and monitoring)** bakalım. Gelişmiş sağlık raporlaması kullanılırken ortamın sağlığını belirten renk endeksi, temel izlemede kullanılan renk endeksinden farklı bir anlama sahiptir. Tahmin edeceğiniz gibi, gelişmiş sağlık izleme, temele göre ek bilgiler gösterir. Buna ek olarak, ortamlar gelişmiş izleme için yapılandırıldığında, EC2 instance'leriniz için kullanılan AMI'lere ayrıca bir sağlık ajanı (health agent) yüklenir ve desteklendiğinde çalıştırılır. Bu, Elastic Beanstalk'ın sistem metrikleri ve web sunucusu log kayıtları gibi ek bilgileri yakalamasına olanak tanır. Bu olanak, Elastic Beanstalk'ın ortamın genel sağlığını daha derin bir düzeyde belirlemesine olanak tanırken, aynı zamanda ELB'ler ve auto scaling gruplarından alınan verilerle ilişkilendirir. Elastic Beanstalk tarafından yakalanan bu ek metrikler ayrıca özel metrikler olarak CloudWatch'a gönderilebilir. Ancak unutmayın ki, bu özellik ek bir maliyet gerektirir.
 
@@ -586,7 +586,7 @@ Sunucusuz hesaplamayı gerçekten anlamak için önce sunucuları anlamanız ger
 
 Şimdi bu altyapı bakımı ve yönetiminin ortadan kalktığını, yalnızca kodunuza ve iş mantığınıza odaklanabildiğinizi düşünün. Sunucusuz hesaplamanın arkasındaki fikir budur. Elbette, bu bakım ve sunucu yönetimi perde arkasında hâlâ var, ancak artık bunu yapmak sizin işiniz değil - bu, AWS tarafından sunulan hizmetin sorumluluğu haline geliyor.
 
-![d5xn05g.md.png](https://iili.io/d5xn05g.md.png)
+![](./assets/compute/compute-3.png)
 
 Bu başlıkta odaklanacağımız sunucusuz hesaplama hizmeti **AWS Lambda** olarak adlandırılır. Lambda'yı anlamak, herhangi bir kod parçasındaki herhangi bir fonksiyonu anlamakla aynıdır. Üç ana parça vardır:
 
