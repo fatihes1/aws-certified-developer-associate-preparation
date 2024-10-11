@@ -164,10 +164,10 @@ O halde, bir item oluşturalım. Burada dilerseniz direkt form görünümü üze
 {
 	"id": 1,
 	"first_name": "Fatih",
-	"last_name": "ES,
+	"last_name": "ES",
 	"home_airport": "ESB",
 	"subscriber": true,
-	"ip_address": "53.44.124.60"
+	"ip_address": "53.44.124.60",
 	"last_flight": "18/03/2024"
 }
 ```
@@ -351,12 +351,12 @@ DynamoDB tablosu oluşturmadan önce veri yapınızı ve beklenen erişim modell
 
 ```json
 {
-	SongNumber: 13765,
-	Name: "The Spirit of Radio",
-	Artist: "Rush",
-	Album: "Permanent Waves",
-	Genre: "Rock,
-	Yead: 1980
+	"SongNumber": 13765,
+	"Name": "The Spirit of Radio",
+	"Artist": "Rush",
+	"Album": "Permanent Waves",
+	"Genre": "Rock",
+	"Year": 1980
 }
 ```
 
@@ -395,7 +395,7 @@ Music örneğimize geri dönelim. Model veri setimizde Local Secondary Index kul
 
 DynamoDB tablosu oluşturmanın en basit yolu AWS Console'u kullanmaktır. Console bize DynamoDB'nin özelliklerini inceleme imkanı sağlar, bu yüzden hadi gelin bununla başlayalım. Ancak, DynamoDB tablosu oluşturmanın en yaygın yolu, command line interface'i veya tanımı otomatikleştirmek, sonrasında tabloyu gerçek veri setleriyle doldurmak için software developer's kit'lerden birini kullanan bir script kullanmaktır.
 
-![dWoEzs1.md.png](https://iili.io/dWoEzs1.md.png)
+![](./assets/database/database-1.png)
 
 Görseldeki yapıyı kullanarak bir tablo oluşturalım. Tablo adı olarak 'MusicCatalog'u kullanıyoruz. Tablodaki her item için benzersiz bir kombinasyon oluşturmak üzere partition key olarak 'Artist' değerini ve sort key olarak 'SongNumber'ı kullanmanın faydalı olacağını önceki başlıkta konuşmuştuk. SongNumber ve Year değerleri, number tipi attributelar olarak tanımlanması gerektiğine dikkat edin. Diğer attributelar string tipinde olacaktır. AWS Console'u kullanarak DynamoDB tablosu oluşturmak için, DynamoDB ana sayfasına gidelim ve ardından 'Create Table' butonuna tıklayalım.
 
@@ -411,7 +411,7 @@ Varsayılan olarak, Global Secondary Index kapasitesi core tablolarla aynı olac
 
 Bu, nadir bir sorgu için modelleme yapmak ve onu her zaman tabloya bağlı tutmakla karşılaştırıldığında size zaman ve para tasarrufu sağlayabilir. AWS console'u kullanarak bir DynamoDB tablosu oluşturduğunuzda, tablonun kullanıma hazır hale gelene kadar oluşturulduğu rapor edildiğini göreceksiniz. Lütfen sadece tabloyu oluşturduğumuzu, henüz hiçbir veri depolanmadığını unutmayın. Console'u kullanarak bir tablo oluşturmak ve ardından bu tabloyu gerçek verilerle doldurmak muhtemelen birden fazla adım gerektirecektir. Actions menüsünden, tabloya veri eklemeye başlamak için 'Create Item'ı seçebiliriz.
 
-![dWoEzs1.md.png](https://iili.io/dWoEzs1.md.png)
+![](./assets/database/database-1.png)
 
 Bu örnek için, bir müzik kataloğunu temsil eden veri setini kullanalım. Console'u kullanarak bir item oluşturmak, partition ve sort key'e ek olarak attributeları eklemenizi gerektirir. Ayrıca, tüm attributelarıyla bir item girmek için DynamoDB JSON formatını da kullanabilirsiniz. Ortaya çıkan süreç sıkıcıdır ve büyük veri setleri için bir tür scripting ve otomasyon kullanmak isteyebilirsiniz. Bir avuç itemdan fazlası için muhtemelen bir script kullanmak veya software developer's kit'lerden birinden yararlanmak en iyisidir. CLI aracılığıyla bir script veya SDK aracılığıyla bir kod kullanmak size daha güvenilir ve verimli sonuçlar sağlayacaktır. Bununla beraber eğer ki DynamoDB oluşturmada yeniyseniz, AWS console servis tarafından sağlanan farklı özellikleri keşfetmek ve ek bilgi için sizi dokümantasyona yönlendirmek gibi sebeplerden dolayı AWS Console'u kullanmak daha verimli olacaktır.
 
@@ -618,7 +618,7 @@ Günlük yedeklemeler otomatik olarak gerçekleştirilir ve varsayılan saklama 
 
 Bir Aurora multi-master kurulumu, müşterinin daha sonra talep üzerine en fazla dört master'a kadar ölçeklendirebileceği aktif-aktif okuma-yazma yapılandırmasında bir çift master yapılandırmanıza olanak tanır. Bu konfigürasyonda, sağlanan herhangi bir master instance'ına okuma ve yazma yapabilirsiniz, bu da compute katmanında gelişmiş hata toleransı sağlar.
 
-![dWUtCI1.md.png](https://iili.io/dWUtCI1.md.png)
+![](./assets/database/database-2.png)
 
 Yukarıda verilen örnekte, konfigürasyon her bir instance'ın kendi availability zone'unda konuşlandırıldığı aktif-aktif bir çift compute instance'ı dağıtır. Bir availability zone'da bir instance kesintisi meydana gelirse, tüm veritabanı yazma işlemleri müşteri tarafından client-side mantığında yönetilen kalan aktif instance'a yönlendirilebilir ve bunu bir failover gerçekleştirme ihtiyacı olmadan yapabilir. Bu durum, aynı zamanda availability zone kesintilerine karşı da koruma sağlar.
 
@@ -840,7 +840,7 @@ Bu özellikler nedeniyle, genellikle tutarlı trafik modellerine sahip büyük �
 
 Tutarlı trafiğiniz yoksa, ancak yine de büyük ölçekte çalışabilen kurumsal düzeyde bir veritabanına ihtiyacınız varsa, **Aurora Serverless**'ı düşünmelisiniz. Bu, normal Amazon Aurora'nın tüm avantajlarını sağlar, ancak veritabanı boşta oturup isteklere hizmet vermediğinde çalışma süresi için ödeme yapmanız gerekmez. Bunun yerine, trafik modellerinizin ihtiyaçlarını karşılamak için compute node'larını otomatik olarak durdurup başlatacaktır.
 
-![dhq8Gm7.md.png](https://iili.io/dhq8Gm7.md.png)
+![](./assets/database/database-3.png)
 
 Özetle, 
 - Bir OLAP veri ambarına ihtiyacınız varsa, Amazon Redshift en iyi seçim olacaktır. 
@@ -891,7 +891,8 @@ DynamoDB'yi sorguladığınızda, verilere anahtar-değer formatını kullanarak
 ACID uyumluluğuna ihtiyacınız yoksa, DocumentDB, DynamoDB veya Amazon KeySpaces for Apache Cassandra'ı kullanabilirsiniz. Keyspaces'i ne zaman kullanacağınızın en büyük faktörü, Cassandra uyumluluğuna ihtiyacınız olup olmadığıdır. Yani, Cassandra ile zaten bir uygulama oluşturduysanız ve engine'i destekleyen tam yönetilen bir veritabanı arıyorsanız veya Cassandra sorgulama diline (CQL) çok aşinaysanız, bu harika bir seçenektir. DynamoDB gibi, hem iç içe hem de temel veri türlerini destekler.
 
 İşlemlere (transactions) ihtiyacınız yoksa, geliştirici tercihi ve aşinalığı doğru motoru seçme kararınıza rehberlik edebilir. Ancak, zengin veri türü desteğine ve esnek veri modellemesine ihtiyacınız varsa, DocumentDB bunun için en uygundur. Genel olarak yüksek ölçeklenebilir bir veritabanına sahip olmaya öncelik veriyorsanız, DynamoDB bu karışıklığa çözüm olacaktır.
-![dhCnYTG.md.png](https://iili.io/dhCnYTG.md.png)
+
+![](./assets/database/database-4.png)
 
 
 ### Özelleştirilmiş Kullanım İçin (For Specialized Usage)

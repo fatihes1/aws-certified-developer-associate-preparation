@@ -1,6 +1,6 @@
 ﻿# Containers (DVA-C02)
 
-Bu başlığın amacı, geliştiriciler için AWS'deki container hizmetlerine bir giriş sağlamaktır. Bu hizmetler şunları içerir:
+Bu başlığın amacı, geliştiriciler için AWS'deki container hizmetlerine bir giriş sağlamaktır. Bu hizmetler aşağıda listelenmiştir:
 
 -   AWS Copilot,
 -   Amazon Elastic Container Registry (Amazon ECR)
@@ -99,7 +99,7 @@ Daha önce bahsettiğimiz gibi, yalnızca containerlarınızı çalıştıran ka
 
 Instance tabanlı containerlarınızı optimize etmek, verimliliğinizi gerçekten maksimize etmek için çok fazla uğraşma ve deneme yanılma gerektirebilir. Ancak ortalama CPU ve bellek rezervasyonunu %100'e çıkarabilseydiniz, EC2 tabanlı bir yaklaşım (servered seçenek) kullanarak %20 daha maliyet verimli olurdunuz.
 
-![dDe260v.md.png](https://iili.io/dDe260v.md.png)
+![](./assets/compute/compute-4.png)
 
 Başka bir senaryoya bakalım. Çok ani yükselen, hızla yukarı ve aşağı giden veya sadece tahmin edilemeyen zamanlarda gelen ve uzun düşük veya ölü zaman (dead time) periyotları olabilen trafiğiniz varsa; bu senaryo, serverless'ın kazandığı başka bir durumdur.
 
