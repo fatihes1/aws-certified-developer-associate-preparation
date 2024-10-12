@@ -125,7 +125,11 @@ Dolayısıyla, S3'te verileriniz için bir depolama sınıfı seçerken, kendini
 - Gerekirse kolayca yeniden oluşturulabilir mi? 
 - Ne sıklıkta erişmem gerekecek? 
 
+<div align="center">
+
 ![daydJTb.md.png](https://iili.io/daydJTb.md.png)
+
+</div>
 
 Bu tablo, tüm S3 depolama sınıflarının ortak özelliklerini özetliyor. Gördüğünüz gibi, aralarındaki temel farklılıklar, kullanım durumu, kullanılabilirlik yüzdesi ve minimum depolama süresi, fiyatlandırmanın yanı sıra budur. 
 
@@ -184,7 +188,11 @@ Günlükler hedef bucket'e gelmeye başladığında, isimler standart bir adland
 
 Şimdi bu log dosyalarından birinin içeriğine bakarak içerdikleri bilgileri anlamaya çalışayım.
 
+<div align="center">
+
 ![dcO9kSn.md.png](https://iili.io/dcO9kSn.md.png)
+
+</div>
 
 Bu görsel, log kayıtlarından birindeki tek bir input örneğidir. Log kaydı boşlukla ayrılmış alanlarla sahiptir.
 
@@ -370,7 +378,11 @@ ACL'ler, IAM ve bucket politikaları tarafından tanımlanan politikalarla aynı
 
 Bir ACL'nin temel yapısı nedeniyle, ACL'leri kullanarak erişimi üstü kapalı olarak (implicity) reddetmek mümkün değildir. Ayrıca, daha önce kimlik tabanlı erişimden bahsederken gördüğümüz gibi koşullu öğeler de uygulayamazsınız. Bir bucket için varsayılan bir ACL örneği gösterildiği gibi görünür.
 
+<div align="center">
+
 ![d0USCrX.md.png](https://iili.io/d0USCrX.md.png)
+
+</div>
 
 Yukarıdaki görselde gördüğünüz gibi, Grantee sütunu tarafından tanımlanan farklı önceden tanımlanmış S3 grupları için farklı izinler belirleyebilirsiniz. İzinler, dört tane olan grantee'ye dayalıdır:
 
@@ -391,7 +403,11 @@ Ayrıca bir grantee olarak başka bir hesap için erişim ekleyebileceğinizi fa
 
 Şimdi de nesne seviyesinde neye benzediğine hızlıca bakalım. İşte bir bucket içindeki bir nesnenin ACL'si. Gördüğünüz gibi, yine varsayılan olarak kaynak sahibi nesne üzerinde tam kontrole sahiptir. Ayrıca, başka bir hesap için erişim ekleyebileceğinizi de fark edeceksiniz.
 
+<div align="center">
+
 ![d0Ugrgt.md.png](https://iili.io/d0Ugrgt.md.png)
+
+</div>
 
 Yine, uygun canonical AWS hesap kimliğini ve ilgili izinleri eklemeniz gerekecek. Ayrıca, daha sonra daha fazla açıklayacağım genel erişimi etkinleştirdiyseniz genel erişimi de belirtebilirsiniz. Bu örnekte, herkes (everyone) grubunun nesneye okuma erişimi olduğunu görebiliyoruz.
 
@@ -416,7 +432,7 @@ Temel olarak, varsayılan olarak AWS, herhangi bir politika içinde açık bir '
       "Sid": "Stmt1604440042841",
       "Action": "s3:*",
       "Effect": "Allow",
-      "Resource": "arn:aws:s3:::s3deeplive",
+      "Resource": "arn:aws:s3:::s3deeplive"
     }
   ]
 }
@@ -819,7 +835,11 @@ Bu başlık altında, hem AWS Console hem de AWS CLI kullanarak bir S3 Lifecycle
 
 S3 konsolunda başlayacağız ve lifecycle-configuration-demo-console adlı bucket'ıma tıklayacağım. Eğer böyle bir bucket'ınız yoksa oluşturup kedi ve sahil fotoğrafları yükleyebilirsiniz. Bucket'ınız içinde objelerinizi görebilirsiniz: birkaç kedi fotoğrafları ve sonra adlı bir klasörünüz var. Bu klasöre tıklarsanız, plaj fotoğraflarınızı görebilirsiniz.
 
+<div align="center">
+
 ![dEpZl49.md.png](https://iili.io/dEpZl49.md.png)
+
+</div>
 
 Plaj fotoğraflarımı taşımak için bir lifecycle konfigürasyonu oluşturmak için, management sekmesine tıklayabilirsiniz ve lifecycle rules altında "create lifecycle rule" seçeneğine tıklayabilirim.
 
@@ -837,7 +857,11 @@ Bize, objelerimi Glacier'a geçirmek için obje başına bir ücret ödeyeceğim
 
 Tüm tanımlama ve ayarlarımızı yaptığımıza göre, "create rule" butonuna tıklamadan önce tüm doğru seçimleri yaptığımızdan emin olmak için inceleyebileceğimiz bir zaman çizelgesi oluşturuluyor. Burada tüm seçimlerimizi tekrar gözden geçirebiliriz.
 
+<div align="center">
+
 ![dEpyupe.md.png](https://iili.io/dEpyupe.md.png)
+
+</div>
 
 Şimdi, AWS konsolunda tıklamayı sevmeyenler için: CLI kullanarak bir yaşam döngüsü konfigürasyonu oluşturmak da aynı derecede kolaydır. CLI kullanarak lifecycle konfigürasyonları yapılandırma hakkında bilmemiz gereken tek şey, konfigürasyonunuzu tanımlayan bir JSON şablon dosyası sağlamanız gerektiğidir. XML'e daha aşina iseniz, her zaman XML olarak yapılandırabilir ve ücretsiz XML'den JSON'a dönüştürme web sitelerinden herhangi birini kullanarak dönüştürmeyi yapabilirsiniz.
 
@@ -879,7 +903,11 @@ Doğrulamak için, S3 konsoluna geri dönebiliriz, demo-cli bucket'ımızı bula
 
 Bu başlık altında, S3 storage class'larını bir merdiven olarak düşünelim. S3 Standard storage merdivenin en üstünde, S3 Glacier Deep Archive ise merdivenin en altında. Ve diğer tüm storage class'lar bunların arasında konumlanmış durumda olmalıdır.
 
+<div align="center">
+
 ![dEyBbQS.md.png](https://iili.io/dEyBbQS.md.png)
+
+</div>
 
 Lifecycle konfigürasyonlarıyla bu merdiven sadece tek yönlü çalışır: yukarıdan aşağı doğru. Verileri merdivenden aşağı, daha düşük maliyetli bir storage class'a geçirdiğinizde, objeleri geri yukarı taşıyamazsınız. Örneğin, diyelim ki verilerimizi S3 Standard-Infrequent Access'e taşıdık. Verilerim bu storage class'a geçtikten sonra, bir lifecycle konfigürasyonu kullanarak verilerimizi S3 Standard'a geri taşıyamayız. Bu, verilerimizi S3 One Zone - IA'ya taşırsak da geçerlidir, onu S3 Intelligent-Tiering, S3 Standard-IA veya S3 Standard'a geri taşıyamayız.
 
@@ -925,7 +953,11 @@ Bu, depolamanızı maliyet-performans perspektifinden gereksinimlerinize uygun h
 
 Bu hacim türleri daha da ayrıntılı olarak bölünebilir. Aşağıdaki tabloya bakarak hem SSD hem de HDD hacim türleri için farklı birimlerin nasıl kullanılabileceğini görebiliriz.
 
+<div align="center">
+
 ![dEywE9n.md.png](https://iili.io/dEywE9n.md.png)
+
+</div>
 
 EBS biriminizin kullanım durumuna bağlı olarak en uygun türü seçebileceğinizi görebilirsiniz. Bu birimlerin her biri ayrıca şu farklı performans faktörlerini sunar: 
 - Birim boyutu (Volume Size), 
@@ -1084,7 +1116,11 @@ Throughput açısından, Bursting veya Provisioned throughput mode'larını seç
 
 Amazon FSx'e gelince, farklı dosya sistemi tekliflerinin tümü milisaniyenin altında gecikme süresi ve en az 2-3 gigabayt/saniye throughput destekleyecektir. FSx for Lustre durumunda, maksimum throughput aslında 1000 gigabayt/saniye ile çok daha yüksektir ve Lustre dosya sistemleri ayrıca petabayt boyutuna kadar ölçeklenebilir. FSx'in farklı çeşitlerinin performans özelliklerini aşağıdaki tabloda görebilirsiniz:
 
+<div align="center">
+
 ![dG7Bu7p.md.png](https://iili.io/dG7Bu7p.md.png)
+
+</div>
 
 FSx dosya sisteminiz için başlangıç throughput kapasitesini oluşturduğunuz sırada yapılandırabilirsiniz. Seçiminiz, dosya sisteminizin genel performansını etkileyecektir. Örneğin, FSx for Windows File Server ile 32'den 2.048 megabayt/saniye'ye kadar değişen throughput kapasiteleri seçebilirsiniz. Seçiminize bağlı olarak, birkaç diğer performans seçeneği de bununla birlikte ölçeklenecektir, bunlar:
 
