@@ -14,7 +14,7 @@ Bu başlığın temel amacı, geliştiriciler için AWS'deki ağ iletişimi ve i
 
 Bu başlık altında Virtual Private Clouds'lere (VPC) yakından bakacağız. VPC'nin ne olduğunu anlamak için, hadi AWS altyapısına bir göz atalım.
 
-![djuZgN1.md.png](https://iili.io/djuZgN1.md.png)
+![](./assets/networking-and-content-delivery/networking-and-content-delivery-1.png)
 
 Bir VPC, AWS Cloud'unun içinde yer alır ve esasen AWS Cloud'unun kendisinin izole edilmiş kendi segmentinizdir.
 
@@ -33,7 +33,7 @@ VPC'nin ne olduğunu öğrendikten sonra, şimdi subnet'lere bir göz atalım. S
 
 VPC'ler hakkında konuşurken bahsettiğim gibi, VPC'nizi oluştururken iki bilgiye ihtiyacınız var. Ona bir isim ve bir CIDR block adresi vermeniz gerekiyor. CIDR block adresi, bir IP adresleri aralığıdır ve bu CIDR block aralığı /16'dan /28'e kadar bir subnet mask'e sahip olabilir.  Örneğimiz için, VPC'mizi 10.0.0.0/16 CIDR block'u ile oluşturduğumuzu varsayalım. Bu önemlidir çünkü VPC'miz içinde oluşturduğumuz herhangi bir subnet bu CIDR block aralığı içinde yer almalıdır. Şimdi birkaç subnet'e bakalım.
 
-![djvKDSs.md.png](https://iili.io/djvKDSs.md.png)
+![](./assets/networking-and-content-delivery/networking-and-content-delivery-2.png)
 
 Subnet tanımlarken iki subnet bulunur: private ve public. Görselde, sarı olan public subnet'imiz olsun, yeşil olan da private subnet'imiz olsun. VPC oluştururken yaptığımız gibi, subnet'lere de bir CIDR block aralığı vermemiz gerekiyor. Örneğin, bu 10.0.1.0/24 olsun. Private subnet de 10.0.2.0/24 olabilir. Yine, bu CIDR block da daha büyük VPC CIDR block'u içinde yer acaktır.
 
@@ -55,7 +55,7 @@ Yapmamız gereken şey, public subnet ile ilişkili olan bu route table'a bir ro
 
 Şimdi, private subnet'in route table'ını karşılaştırırsak, private subnet sadece local route'a sahip olduğunu görebiliriz. Yani Internet gateway'e giden bir route'u yoktur. Bir Internet gateway'in varlığından bile haberdar değildir, bu yüzden public internete çıkış yolu yoktur. Bu nedenle bu bir private subnet olarak kabul edilir. Şimdi, public subnet'e geri dönelim, IGW'yi içeren route'un olmadığı bir senaryoda, subnet private bir subnet'tir. Çünkü Internet gateway'e giden bir route'u yoktur. Bunu akılda tutalım her subnet oluşturduğunuzda, başlangıçta private bir subnet'tir ve VPC'nize bir Internet gateway ekleyip bu ek route'u ekleyene kadar da öyle kalır.
 
-![djvTFf4.md.png](https://iili.io/djvTFf4.md.png)
+![](./assets/networking-and-content-delivery/networking-and-content-delivery-3.png)
 
 Artık public subnet'lere ve private subnet'leri tanıdığımıza göre, şimdi yüksek kullanılabilirlik ve dayanıklılık için VPC'niz genelinde birden fazla subnet'i tasarlamaya bakalım. Bu sefer VPC altında, üç subnet'imiz olduğunu düşünelim. Bir public subnet'imiz ve iki private subnet'imiz olacak. Public subnet'imiz, web katmanımız olsun. Diğer iki private subnet'imiz ise sırasıyla web katmanımız ve bu da veritabanı katmanımız olsun.
 
@@ -67,7 +67,7 @@ Elbette, bunlar da devre dışı kalırdı çünkü hepsi availability zone 1'de
 
 Bu kapsamda altı subnet'imiz oluşmuş olacaktır. Şimdi, bu sefer altyapımızı dağıtacağımız availability zone'lara bakalım.
 
-![djv5Fj9.md.png](https://iili.io/djv5Fj9.md.png)
+![](./assets/networking-and-content-delivery/networking-and-content-delivery-4.png)
 
 Örneğin, public subnet'i AZ-1 ve private subnet'leri sırasıyla AZ-2 ve AZ-3'de konumlandırdığımızı düşünelim. Benzer şekilde aynı işlemi az önce bahsettiğimiz ve subet sayısını altıya çıkaran üç subnet için de yapmamız gerekcektir. Örneğin, public subnet'i AZ-3'te, private subnet'leri ise sırasıyla AZ-1 ve AZ-2'de konuşlandıralım. Şimdi senaryoyu tekrar gözden geçirelim. AZ-1'in bir arıza yaşadığını hayal edelim. Bu durumda ne olurdu? Bir public subnet devre dışı kalırdı. Bununla beraber uygulama katmanının bulunduğu private subnet de erişilemez olacaktır. Bu durumda, altyapımızın her katmanında hala bir subnet'imiz mevcut olarak çalışmaya devam edecektir. Yani availability zone bir'de bir arıza yaşarsak, hizmetlerimiz çalışmaya devam edecek.
 
@@ -81,7 +81,7 @@ AWS içinde güvenlik, herhangi bir dağıtımın kilit bir parçasıdır ve san
 
 NACL'ler yani ağ erişim kontrol listelerine bakalım. NACL'ler esasen her bir subnet'e ilişkilendirilmiş sanal ağ düzeyinde güvenlik duvarlarıdır. VPC'niz içinde ve dışında ve subnet'leriniz arasında hareket eden hem giriş hem de çıkış trafiğini kontrol etmeye yardımcı olur.
 
-![dOEIVUB.md.png](https://iili.io/dOEIVUB.md.png)
+![](./assets/networking-and-content-delivery/networking-and-content-delivery-5.png)
 
 Yukarıda gördüğünüz VPC'de bulunan bileşenlere bir göz gezdirelim. İlk olarak bir public subnet bulunuyor. VPC'mize bağlı internet gateway'imiz var ve tabi ki gateway'e giden bir route tanımlı ki bu da internet ile iletişim kuruyor.
 
@@ -89,7 +89,11 @@ Güvenliği sağlamaya yardımcı olmak için burada yapabileceğimiz ilk şey, 
 
 Bu bir public subnet olduğundan, burada HTTP ve HTTPS üzerinden konuşan bazı web sunucularımız olabilir. Bu yüzden bu subnet'e ilişkilendirilebilecek gelen network access control list'e bakalım.
 
+<div align="center">
+
 ![dOERLpS.md.png](https://iili.io/dOERLpS.md.png)
+
+</div>
 
 Örneğin yukarıdaki örnek listeye bakarsak, bir dizi farklı alan olduğunu görebiliriz. Rule number, type, protocol, port range, source ve allow / deny alanlarımız var. Rule number'lar, kuralların NACL içinde hangi sırayla görüneceğini belirlemenize olanak tanır ve trafik bu kurallardan birine ulaştığında, tüm type, protocol, port range ve source vb. eşleşirse, sonundaki eylemi gerçekleştirecektir.
 
@@ -103,7 +107,11 @@ Bunu göz önünde bulundurarak, public subnet'imize izin verilen tek trafik esa
 
 Şimdi bir de giden (outbound) trafiğe daha yakından bakalım bakalım. Alan türleri, bir değer hariç hepsi inbound rules ile  tamamen aynıdır. Sadece outbound kuralların bir hedefi varken inbound trafiğin ise kaynağı vardı. Yani giden trafikte, trafiği hedefine göre kısıtlamamıza izin verilmektedir.
 
+<div align="center">
+
 ![dOE01cu.md.png](https://iili.io/dOE01cu.md.png)
+
+</div>
 
 Burada sahip olduğumuz ilk kural, herhangi bir protokol kullanan herhangi bir trafiğin herhangi bir port aralığında herhangi bir hedefe giderse, o trafiğe izin ver diyor. Başka her şey reddedilmelidir, ancak bu durumda başka bir şey olmayacaktır çünkü bu giden kural esasen herhangi bir protokolü kullanarak istediğiniz herhangi bir trafiği bu subnet'ten herhangi bir hedefe gönderimine izin vermek üzerine tanımlı.
 
@@ -119,7 +127,8 @@ Güvenlik konusunda devam ederek, şimdi de security group'lara yakından bakal�
 
 Aşağıdaki şemayı göz önüne alarak, diyelim ki üç private subnet'imiz bulunuyor. Her birinin IP adresleri olmalıdır, ilki için 10.0.1.0/24 tanımlayalım. Sırasıyla iki ve üçüncü subnet için değerlerimiz ise 10.0.2.0/24 ve 10.0.3.0/24 olsun. Sonrasında senaryomuzu detaylandıralım, ilk subnet'te EC2 instance'ları olsun. İkinci subnet'te MySQL veya Aurora çalıştıran RDS instance'ları olabilir ve son subnet'te de yine EC2 instance'larının olduğu bir senaryo düşünelim.
 
-![dOEvciu.md.png](https://iili.io/dOEvciu.md.png)
+
+![](./assets/networking-and-content-delivery/networking-and-content-delivery-6.png)
 
 Bu üç subnet'in her biri aynı network access control list ile ilişkilendirilmiş durumdadır. Network access control list ise aşağıdaki görseldeki gibi olduğunu düşünelim. 
 
@@ -139,7 +148,6 @@ NACL'ler subnet ve ağ katmanı için kullanılırken, security group'lar instan
 
 Sırada başka bir VPC bileşeninden, NAT Gateway'e göz gezidirelim. Aşağıdaki görseli inceleyelim, çok basit bir VPC'miz var ve bu VPC'de iki subnet bulunuyorç. Bu subnet'lerden bir public subnet ve bir de private subnet olarak tanımlanmış. Bir de elbette, VPC'mize bağlı bir Internet gateway olacak, IGW de ağımızın internete bağlanağı köprü görevini görecektir. 
 
-![dOrZHPa.md.png](https://iili.io/dOrZHPa.md.png)
 
 Senaryomuzu düşünelim, private subnet'imizde uygulamalarımızı çalıştıran bir dizi EC2 instance'ımız olduğunu düşünelim. Bununla beraber, public subnet'imizde de bir dizi web sunucumuzu konuşlandıralım. Bildiğimiz gibi, bu subnet'lerin her birine tanımlanmış route table bulunuyor. Public route table, Internet gateway'e ve diğer private subnet'e erişime sahip olacaktır.
 
@@ -372,8 +380,31 @@ Bu durum bilgisi genellikle ayrıştırılabilen ve gerektiği gibi kullanılabi
 
 Veritabanımızdaki tüm müşterilerin bir listesini almak istediğimizi hayal edin. Zaten oluşturulmuş bir API'miz varsa, bilgileri almak için API'yi kullanabiliriz.
 
-![deRifSe.md.png](https://iili.io/deRifSe.md.png)
-Yukarıdaki görselde, API'nin arka uç veritabanından tüm müşterileri döndürdüğünü görebiliriz. Finn, Jake ve Fire Princess'i görebiliyoruz.
+
+```json
+REQ: GET www.example.com/api/customers
+
+RES: {
+    "customers": [
+        {
+            "id": 1,
+            "name": "Finn"
+        },
+        {
+            "id": 2,
+            "name": "Jake"
+        },
+        {
+            "id": 3,
+            "name": "Fire Princess"
+        }
+    ]
+}
+
+```
+
+
+Yukarıdaki JSON dosyasında, API'nin arka uç veritabanından tüm müşterileri döndürdüğünü görebiliriz. Finn, Jake ve Fire Princess'i görebiliyoruz.
 
 Ancak ID'sini zaten biliyorsanız belirli bir müşteriyi almak isteyebilirsiniz.
 
@@ -425,7 +456,11 @@ Artık proxy ve doğrudan entegrasyon arasındaki farkı anladığımıza göre,
 - **AWS Servis Entegrasyonu:** Bu entegrasyon, bir AWS Servis API yanıtıyla yanıt vermenizi sağlar. Bu entegrasyon çağrıldığında, API Gateway sizin için belirli bir AWS Servis API'sini çağıracaktır. Örneğin, bir Amazon SQS kuyruğuna mesaj göndermek veya bir Step Functions state machine'ini başlatmak için kullanabilirsiniz. Bu entegrasyon, kullanıcılarınızın tam erişime sahip olmadan AWS Servisine erişmesini istediğinizde iyidir. Bu da sadece doğrudan entegrasyon için mevcuttur.
 - **VPC Link Entegrasyonları:** Bu entegrasyon türü, VPC'nizdeki özel kaynaklara erişmenizi sağlayacaktır. Bu kaynaklar, Application Load Balancer'lar veya container tabanlı uygulamalar gibi çeşitli varyasyonlarda olabilir. Bu entegrasyon türü de sadece doğrudan entegrasyondur. Ancak tüm bu entegrasyonlarla, müşterilerinizin isteyebileceği her türlü backend servisini hemen hemen ele alabilirsiniz. 
 
+<div align="center">
+
 ![deaQiXe.md.png](https://iili.io/deaQiXe.md.png)
+
+</div>
 
 REST API kullanan API Gateway'ler, beş entegrasyon türünün tümüne erişebilir: 
 - Lambda Fonksiyonları, 
@@ -497,23 +532,43 @@ Latency, integration latency ve diğer API Gateway yükünü içerir. Integratio
 
 HTTP ve REST API'ler arasındaki farkı tartışmış olsak da, mimarileriniz için belirleyici olabilecek daha spesifik bazı noktalara geri dönelim. Daha önce tartıştığımız gibi, API'nizin yetkilendirmesine baktığınızda, REST API kullanırken Native OpenIDConnect / OAuth 2.0 kullanamayacaksınız. Ancak, Cognito'nun farklı bir şekilde de olsa bu boşluğu doldurabileceğini düşünüyoruz. Entegrasyon potansiyeline baktığımızda, REST API Application Load Balancer veya Cloud Map ile özel entegrasyon sağlayamıyor. Bunun için alternatifler vardır.
 
+<div align="center">
+
 ![decspgR.md.png](https://iili.io/decspgR.md.png)
+
+</div>
 
 İşte AWS'nin bu konuda önerisi: "Özel Application Load Balancer'lar için, önce özel bir Network Load Balancer'a bağlanmak için API Gateway'in VPC linkini kullanın. Ardından, API Gateway isteklerini özel Application Load Balancer'a iletmek için Network Load Balancer'ı kullanın." Yani direkt olarak çalışmasa da, bir sürüm sonrasında çalışmasını zorlayabilirsiniz.
 
 API Yönetimi konusunun çok kısa da olsa üzerinden geçtik. Ancak bazı insanlar gerçekten burada bir seçim yapmak zorunda kalabilir. API'niz o API Anahtarlarına ve kullanım planlarına ihtiyaç duyacaksa, şimdilik REST API'yi kullanmak zorundasınız. Ek olarak, HTTP API ile özel bir alan adı kullanmak için bir uyarı bulunmaktadır. Bu uyarı da TLS 1.2'nin desteklenen tek TLS sürümü olmasıdır.  API'nizin gelen isteklerin body değerini  değiştirme yeteneğine ihtiyacı varsa, REST API kullanmanız gerekir.
 
+<div align="center">
+
 ![decboDN.md.png](https://iili.io/decboDN.md.png)
+
+</div>
+
 Ek olarak, API önbelleğe almak isterseniz, bu da REST API'ye ait bir özelliktir. Backend'inizden gelen isteği ve yanıtı değiştirmek sizin için önemli değilse, HTTP API'leri oldukça indirimli bir seçenek olabilir. Ancak, bu servislere ihtiyacınız varsa, yine REST API'yi kullanmak zorundasınız. Güvenlik tarafında, REST API tam özellikli ve WAF erişimine sahiptir. Ancak HTTP API'ler  güçlü güvenlik özelliklerinden yoksundur. 
 
+<div align="center">
+
 ![delB6b9.md.png](https://iili.io/delB6b9.md.png)
+
+</div>
+
 Monitoring konusuna bakarsak yine, REST API tüm özelliklere sahipken, HTTP API biraz geride kalmış durumdadır. Ancak, bunların çoğu insan için büyük bir sorun teşkil etmeyebilir. 
 
 #### Fiyatlandırma (Pricing)
 
 Son olarak, aslında çoğu kullanıcı için en önemlisi olabilir. Bu iki API arasındaki fiyat farkından bahsedelim. Bahsettiğimiz gibi, HTP API'yi kullanmak için oldukça fazla şeyden vazgeçmeniz gerekecek. O halde bu tasarrufun ne olacağına bakalım. 
 
+<div align="center">
+
 ![delGVN1.md.png](https://iili.io/delGVN1.md.png)
+
+</div>
+
+
 Görselde REST API için maliyetleri görebilirsiniz, ilk 300 milyon civarı API çağrısı 3,50 dolar maliyete sahip. Kullanım arttıkça fiyat düşer. Ancak fark etmiş olmalısınız ki, bu fiyatı gerçekten düşürmek için milyarlarca çağrı yapmanız gerekecek. Bunu HTTP API ile karşılaştırırsak, fiyatın zaten REST API'nin en ucuz modelinden bile çok daha düşük olduğunu görebilirsiniz. Yani oldukça fazla şeyden vazgeçiyorsunuz, ancak bununla başa çıkabiliyorsanız ve oldukça büyük bir tasarruf elde edebilirsiniz. Bununla beraber, HTTP API ile daha fazla hacmin sadece %10'luk bir indirim olduğunu belirtmekte fayda var.
 
 ## Elastic Load Balancer (ELB)
@@ -524,11 +579,19 @@ Elastic Load Balancer'ın (genellikle ELB olarak anılır) ana işlevi, hedeflen
 
 Diyelim ki, ortamınızda tek bir EC2 instance üzerinde bulunan yeni bir uygulama oluşturdunuz ve bu uygulamaya bir dizi kullanıcı erişiyor. Bu aşamada, mimariniz mantıksal olarak aşağıda gösterildiği gibi özetlenebilir.
 
+<div align="center">
+
 ![deWTzlV.md.png](https://iili.io/deWTzlV.md.png)
+
+</div>
 
 Eğer mimari tasarım ve en iyi uygulama ilkelerine aşinaysanız, tek bir instance kullanma yaklaşımının ideal olmadığını fark bilirsiniz. Ancak bu yöntem kesinlikle çalışır ve kullanıcılara hizmet sağlar bu bir gerçektir. Ancak, bu altyapı düzeni bazı zorluklar getirir. Örneğin, uygulamanızın bulunduğu tek bir instance donanım veya yazılım arızasından dolayı çalışmayı durdurabilir. Eğer bu gerçekleşirse, uygulamanız kapalı kalır ve kullanıcılarınıza erişilemez hale gelir. Ayrıca, ani bir trafik artışı yaşarsanız, instance performans sınırlamaları nedeniyle bu ek yükü kaldırmakta zorlanabilir. Sonuç olarak, altyapınızı güçlendirmek ve bu tür zorlukları gidermeye yardımcı olmak, beklenmedik trafik artışları ve yüksek kullanılabilirlik gibi durumlar için, tasarıma bir **Elastic Load Balancer** ve uygulamanızı çalıştıran ek bir instance eklemelisiniz.
 
+<div align="center">
+
 ![deXChQ4.md.png](https://iili.io/deXChQ4.md.png)
+
+</div>
 
 Yukarıdaki tasarımda görüldüğü gibi, AWS Elastic Load Balancer, kullanıcıdan gelen trafiği almak ve trafiği daha fazla sayıda instance arasında eşit olarak dağıtmak için bir nokta görevi görecektir. Varsayılan olarak, ELB, AWS tarafından yönetilen bir hizmet olduğundan yüksek düzeyde kullanılabilirliğe sahiptir. Bu nedenle, dayanıklılığını AWS garanti eder. Bu yüzden biz endişelenmek zorunda kalmayız. ELB, tek bir hata noktası gibi görünebilir; ancak aslında AWS tarafından yönetilen birden fazla instance'tan oluşur. Bu senaryoda, artık uygulamamızı çalıştıran üç instance bulunuyor. Önceden tartıştığımız zorluklara tekrar dönelim. Bu üç instance'tan herhangi biri arızalanırsa, ELB tanımlanmış metriklere dayanarak arızayı otomatik olarak tespit eder ve trafiği kalan iki sağlıklı instance'a yönlendirir. Ayrıca, bir trafik artışı yaşarsanız, uygulamanızı çalıştıran ek instance'lar bu ek yükle başa çıkmaya yardımcı olur. ELB kullanmanın birçok avantajından biri, AWS tarafından yönetiliyor olması ve tanımı gereği elastik olmasıdır. Bu, gelen trafik arttıkça veya azaldıkça otomatik olarak ölçekleneceği anlamına gelir.
 
@@ -554,8 +617,11 @@ Hedef grubu, ELB'nin istekleri yönlendirmesini istediğiniz kaynakların oluşt
 
 Kurallar, ELB'niz içinde yapılandırdığınız her bir listener ile ilişkilendirilir ve gelen bir isteğin hangi hedef gruba yönlendirileceğini tanımlamaya yardımcı olur. ELB'niz bir veya daha fazla listener içerebilir, her listener bir veya daha fazla kural içerebilir, her kural birden fazla koşul içerebilir ve kuraldaki tüm koşullar tek bir eyleme eşittir. Bir örnek kural, koşulları temsil eden 'if' ifadesi ve tüm koşullar karşılandığında eylem olarak hareket eden 'then' ifadesi şeklinde olabilir. ELB'nin yanıt verdiği listener isteğine bağlı olarak, bu koşullar ve eylemleri içeren bir öncelik listesine dayalı bir kural ilişkilendirilecektir. Örneğin, istek 10.0.1.0/24 ağ aralığından geliyorsa  ve bir HTTP PUT isteği yapıyorsa, istek Group1 adlı hedef grubuna gönderilsin, şeklinde bir tanımlama bir eylemdir.
 
+<div align="center">
+
 ![dehL5Tg.md.png](https://iili.io/dehL5Tg.md.png)
 
+</div>
 
 #### Sağlık kontrolleri (Health checks)
 
