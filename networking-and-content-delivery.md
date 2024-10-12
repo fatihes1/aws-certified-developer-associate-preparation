@@ -132,13 +132,21 @@ Aşağıdaki şemayı göz önüne alarak, diyelim ki üç private subnet'imiz b
 
 Bu üç subnet'in her biri aynı network access control list ile ilişkilendirilmiş durumdadır. Network access control list ise aşağıdaki görseldeki gibi olduğunu düşünelim. 
 
+<div align="center">
+
 ![dOESKCX.md.png](https://iili.io/dOESKCX.md.png)
+
+</div>
 
 Bu NACL basitçe şu tanımlamayı içerir: herhangi bir port aralığında TCP Protokolü kullanan, herhangi bir kaynaktan gelen trafiğe izin ver ve diğer tüm trafiği reddet. Yani bu subnet'ler arasında, herhangi bir port üzerinde herhangi bir TCP Protokolü kullanılabilir ve basitlik açısından, aynı NACL kuralları hem gelen hem de giden trafik için kullanılmış.
 
 Şimdi yapmak istediğimizin, hangi instance'ların buradaki RDS ve Aurora veritabanlarımızla konuşabileceğine erişimi kısıtlamak olduğunu düşünelim. Sadece birinci subnet'ten erişime izin vermek ve üçüncü subnet'ten erişimi reddetmek isteyebiliriz. Bu amaca ulaşmak için, security group'ları kullanabiliriz. Öyleyse, veritabanlarımızın bulunduğu subnet için security group'a bir göz atalım.
 
+<div align="center">
+
 ![dOEgCml.md.png](https://iili.io/dOEgCml.md.png)
+
+</div>
 
 Security group'lar NACL'lere benzer alanlar içerir, sadece birkaç tane daha az alanı bulunur. Security group'ta kural numarası bulunmaz. Bu durumda da security group içindeki tüm kuralların, eylem hakkında bir karar verilmeden önce değerlendirileceği anlamına gelir. Bununla beraber, izin ver (allow) veya reddet (deny) seçeneği olmadığını da fark edebilirsiniz. Security group'larda, eğer bir kural tanımlı ise bunun izin verildiği (Allow) anlamına gelir. Rğer kural yoksa, varsayılan olarak tüm trafik düşürülür. Şidmi yukarıdaki security group'a bakalım. 3306 portunda TCP Protokolü kullanan herhangi bir MySQL veya Aurora trafiği, 10.0.1.0 kaynağından geliyorsa (ki bu değer ilk subnet için tanımlı olan değerdir), izin verildiği kabul edilir. Bu security group'ta 10.0.3.0/24 kaynağı için (ki bu senaryoda üçüncü subnet'i temsil eder) başka bir kuralımız olmadığından, reddedildiği kabul edilir. 
 
@@ -157,7 +165,11 @@ Tamam, bu konu cepte; devam edelim. EC2 instance'larımızın işletim sistemler
 
 NAT gateway, public subnet içinde yer alır. Public subnet içinde yer aldığı için, bir EIP (Elastic IP address) şeklinde public bir IP adresine sahip olması gerekir. Bu IP adresi, instance'ın kendisine atanır. Public subnet içinde yer aldığı için, Internet gateway'e ve haliyle internete bir route kaydı vardır. NAT Gateway'imizi kurup yapılandırdıktan sonra, private subnet'imizin route table'ını güncellemamiz gerekir. Varsayılan olarak, private subnet'imizdeki route table'da sadece tüm route table'ların sahip olduğu local route'un tanımlı olacağını görmüştük. Ancak bunu NAT Gateway'e bir route sağlayacak şekilde güncellersek, istediğimize ulaşabiliriz. Eklenecek olan route kaydı, Internet gateway üzerinden internete erişim sağlamak için public subnet'e eklediğimiz route kaydına oldukça benzer hatta aynısıdır. Yani 0.0.0.0/0'ı CIDR kaydı ekleyeceğiz, bu temelde route table'da herhangi bir IP adresine yönelik bir hedefi tanımlamak için kullanılır. Sonra, route kaydının hedef alanını NAT gateway olarak belirleriz.
 
+<div align="center">
+
 ![dO6x1Pn.md.png](https://iili.io/dO6x1Pn.md.png)
+
+</div>
 
 Kaydı oluşturduktan sonra bu kayıt temelde şunu açıklar: Eğer bu subnet içindeki herhangi bir kaynak bir güncelleme yapmak için internete erişmesi gerekiyorsa, bunu buradaki NAT üzerinden yapabilir. Bu NAT gateway daha sonra isteği alacak, Internet gateway üzerinden gidecek ve gerekli olan uygun yazılımı indirecektir ve sonrasında bu isteği yollayan EC2 instance'ına geri gönderecektir. NAT gateway ile ilgili önemli bir konu ise, internetten gelen hiçbir iletişimi kabul etmeyecek olmasıdır. Sadece VPC'nizin içinde oluşturulan giden (outbound) iletişimleri kabul edecektir. Yani internetten instance'a gelen tüm trafiği reddedecektir.
 
@@ -354,7 +366,11 @@ Ayrıca sunucudan gelen yanıtları tanımlamak için kurallar vardır. Her yan�
 
 Örneğin, muhtemelen 404 durum koduna aşinasınız, bu sunucunun aradığınız şeyin bulunamadığını size söylemesidir. Ayrıca her şeyin beklendiği gibi gittiği anlamına gelen 200 durum kodunu da görmüş olabilirsiniz.
 
+<div align="center">
+
 ![deReAWg.md.png](https://iili.io/deReAWg.md.png)
+
+</div>
 
 Her farklı kod seviyesinin (200, 300 vb.) farklı bir anlamı vardır. 2xx yanıtları genellikle her şeyin yolunda gittiği anlamına gelir. 500 kodları, sunucunun yanıt oluşturmada bir sorunu olduğu anlamına gelir. 3xx'ler yönlendirmeleri kapsar ve 4xx aralığı istemci tarafında istekle ilgili sorunlar olduğunu gösterir.
 
@@ -534,7 +550,7 @@ HTTP ve REST API'ler arasındaki farkı tartışmış olsak da, mimarileriniz i�
 
 <div align="center">
 
-![decspgR.md.png](https://iili.io/decspgR.md.png)
+![](./assets/networking-and-content-delivery/networking-and-content-delivery-7.png)
 
 </div>
 
@@ -544,7 +560,7 @@ API Yönetimi konusunun çok kısa da olsa üzerinden geçtik. Ancak bazı insan
 
 <div align="center">
 
-![decboDN.md.png](https://iili.io/decboDN.md.png)
+![](./assets/networking-and-content-delivery/networking-and-content-delivery-9.png)
 
 </div>
 
@@ -552,7 +568,7 @@ Ek olarak, API önbelleğe almak isterseniz, bu da REST API'ye ait bir özellikt
 
 <div align="center">
 
-![delB6b9.md.png](https://iili.io/delB6b9.md.png)
+![](./assets/networking-and-content-delivery/networking-and-content-delivery-8.png)
 
 </div>
 

@@ -27,7 +27,11 @@ AWS Management Console, AWS CLI veya PutDashboard API'sini kullanarak, kaynaklar
 
 Özelleştirilmiş dashboard'unuzdaki kaynaklar birden fazla farklı bölgeden olabilir, bu da onu çok kullanışlı bir özellik haline getirir. Kendi görünümlerinizi oluşturabildiğiniz için, iş ve operasyonel perspektiften görmeniz gereken verileri temsil eden farklı dashboard'ları hızlı ve kolay bir şekilde tasarlayıp yapılandırabilirsiniz. Örneğin, belirli bir projeyle veya belirli bir müşteriyle ilgili tüm performans metriklerini ve alarmlarını görüntülemeniz gerekebilir. Ya da belirli bir bölge veya uygulama dağıtımı için farklı bir dashboard oluşturmak isteyebilirsiniz. Önemli nokta, verilerinizi nasıl temsil etmek istediğinize göre tamamen özelleştirilebilir olmalarıdır.
 
+<div align="center">
+
 ![drVEzib.md.png](https://iili.io/drVEzib.md.png)
+
+</div>
 
 Dashboard'larınızı oluşturduktan sonra, AWS hesabınıza erişimi olmayan kişiler de dahil olmak üzere diğer kullanıcılarla kolayca paylaşabilirsiniz. Bu, CloudWatch tarafından toplanan bulguları, log kayıtları operasyonel rollerinde sonuçları ilginç ve faydalı bulabilecek ancak AWS hesabınıza erişme ihtiyacı olmayan kişilerle paylaşmanıza olanak tanır.
 
@@ -374,7 +378,11 @@ Yukarıdak, örneğe bakalım ve log dosyasının her öğesini, neyi ifade etti
 
 - responseElements, isteklerin action'larını gösterecektir, AWS Management Console'a bu login isteğinin yanıtı burada ConsoleLogin öğesi altında 'Success' olarak gösterilmiştir. Bu değerden, access'in başarıyla verildiğini ve CloudAcademy kullanıcısına access verildiğini belirleyebiliriz.
 
+<div align="center">
+
 ![d4ZDn4V.md.png](https://iili.io/d4ZDn4V.md.png)
+
+</div>
 
 - Bunu takiben, additionalEventData parametresi bulunur. Bu parametre basitçe log'daki önceki değerler tarafından vurgulanmamış event hakkındaki ek bilgileri vurgular. Bu verilerden, IAM user'ın yönlendirildiği URL'yi, MobileVersion üzerinden erişilmediği gerçeğini ve IAM user Cloudacademy'nin Multi-Factor Authentication (MFA) kullandığını görebiliyoruz. Bu bilgi değerlidir çünkü isteğin veya yanıtının bir parçası olmayan diğer verileri tanımlamaya yardımcı olur.
 
@@ -390,7 +398,11 @@ Yukarıdak, örneğe bakalım ve log dosyasının her öğesini, neyi ifade etti
 	- AwsConsoleSignIn - İsteğin AWS Management Console'a giriş yapmak için yapıldığını belirtir. Bu, burada çalıştığımız örneğimiz için geçerlidir
 	- AwsCloudTrailInsight - Event'in CloudTrail Insights'ın bir parçası olarak kaydedildiğini temsil eder. CloudTrail Insights, bir Write API'nin eylemi temelinde hesabınız içinde tespit edilen olağandışı davranışları izlemenize ve tanımlamanıza yardımcı olur.
 
+<div align="center">
+
 ![d4ZmgBj.md.png](https://iili.io/d4ZmgBj.md.png)
+
+</div>
 
 - Ardından, bunun bir management event olup olmadığını belirleyen managementEvent değeri bulunur. Bir management event, hesabınızda çalışan AWS resource'larınıza karşı alınan management operation'ları hakkında bilgi izler.
 
