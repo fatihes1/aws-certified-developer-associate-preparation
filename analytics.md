@@ -740,7 +740,7 @@ Bununla birlikte, demolarımız ve deneylerimiz için, tam yönetici ayrıcalık
   "Statement": [
     {
       "Effect": "Allow",
-      "Action": "kinesis:*"
+      "Action": "kinesis:*",
       "Resource": [
         "arn:aws:kinesis:*:111122223333:stream/*"
       ]

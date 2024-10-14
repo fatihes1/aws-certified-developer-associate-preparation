@@ -1013,19 +1013,19 @@ version: 0.0
 os: linux
 files:
 	- source: /index.html
-		destination: /var/www/html
+	  destination: /var/www/html
 hooks:
 	BeforeInstall:
 		- location: install_dependencies.sh
-			timeout: 300
-			runas: root
+		  timeout: 300
+		  runas: root
 		- location: start_server.sh
-			timout: 300
-			runas: root
+		  timout: 300
+		  runas: root
 	ApplicationStop:
 		- location: stop_server.sh
-			timout: 300
-			runas: root
+		  timout: 300
+		  runas: root
 ```
 
 EC2 ve on-premises platformları için appspec dosyası beş ana bölüme ayrılmıştır: version, os, files, permissions ve hooks. Ancak yukarıdaki örndek dosyada bu bölümlerden yalnızca dördü kullanılmıştır. Her birinden sırayla bahsedelim.
@@ -1046,17 +1046,17 @@ Bu başlık altında, iki appspec dosyasına bakacağız: biri Lambda platformu 
 version: 0.0
 resources:
 	- myLambdaFunction:
-		Type: AWS::Lambda::Function
-		Properties:
-			Name: "myLambdaFunction"
-			Alias: "myLambdaFunctionAlias"
-			CurrentVersion: "1"
-			TargetVersion: "2"
+	  Type: AWS::Lambda::Function
+	  Properties:
+	    Name: "myLambdaFunction"
+		Alias: "myLambdaFunctionAlias"
+		CurrentVersion: "1"
+		TargetVersion: "2"
 hooks:
 	- BeforeAllowTraffic:
-		"LambdaFunctionToValidateBeforeTrafficShift"
+	  "LambdaFunctionToValidateBeforeTrafficShift"
 	- AfterAllowTraffic:
-		"LambdaFunctionToValidateAfterTrafficShift"
+	  "LambdaFunctionToValidateAfterTrafficShift"
 ```
 
 Yukarıdaki dosya Lambda appspec dosyasıdır. Lambda appspec dosyalarının üç bölümü vardır: version, resources ve hooks. Version bölümü EC2 appspec dosyasıyla aynıdır, AWS bunu sizin için belirler ve 0.0 olarak kalır. Hooks bölümü de kavramsal olarak EC2 appspec dosyasındakiyle aynıdır, ancak her aşamada dosyalarda bulunan script'leri çalıştırmak yerine, her aşamada Lambda function'ları çalıştırırsınız. Bu durumda, trafiği yönlendirmeden önce deployment'ı doğrulamak için bir Lambda function çalıştırıyor. Ayrıca AfterAllowTraffic aşamasında, trafik yönlendirmesinin çalıştığından ve kodunuzun başarıyla deploy edildiğinden emin olmak için bir Lambda function çalıştırıyor.

@@ -174,7 +174,9 @@ Bu başlık altında, IAM politikalarının sözdizimi ve yapısına derinlemesi
 		{
 			"Sid": "Stmt1494509737040",
 			"Effect": "Allow",
-			"Principal": "AWS": "arn:aws:iam:730739171055:user/Fatih",
+			"Principal": {
+				"AWS": "arn:aws:iam::123456789012:root"
+			},
 			"Action": "cloudtrail:*",
 			"Resource": "*",
 			"Condition": {
@@ -229,7 +231,7 @@ Yukarıdaki politikanın yapısını her bir öğeyi anlamanıza olanak tanıyac
 			"Sid": "StatementBlock2",
 			"Effect": "Allow",
 			"NotAction": "rds:DeleteDBInstance",
-			"Resource": "*",
+			"Resource": "*"
 		},
 		{
 			"Sid": "StatementBlock3",
@@ -254,11 +256,11 @@ StatementBlock3: Bu, S3'teki cloudacademy bucket'ı içinde S3 Bucket'larının 
 	"Version": "2012-10-17",
 	"Statement": [
 		{
-			"Sid:" "S3AccessWithMFAEnabled",
+			"Sid:": "S3AccessWithMFAEnabled",
 			"Effect": "Allow",
 			"Principal": {
 				"AWS": ["arn:aws:iam::730739171055:user/Fatih"]
-			}
+			},
 			"Action": [
 				"s3:CreateBucket",
 				"s3:DeleteBucket",
@@ -266,11 +268,11 @@ StatementBlock3: Bu, S3'teki cloudacademy bucket'ı içinde S3 Bucket'larının 
 				"s3:DeleteObject",
 				"s3:PutOBject"
 			],
-			"Resource": "arn:aws:s3::fe-bucket-tr"
+			"Resource": "arn:aws:s3::fe-bucket-tr",
 			"Condition": {
 				"Bool": {"aws:MultiFactorAuthPresent": "True"}	
 			}
-		},
+		}
 	]
 }
 ```
