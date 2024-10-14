@@ -1,5 +1,7 @@
 ﻿# AWS Certified Developer - Associate Exam Preparation
 
+![](./assets/cover.png)
+
 Merhaba! AWS Certified Developer - Associate sertifika sınavına hazırlanmanıza ve bu sınavı geçmenize yardımcı olacak bu GitHub reposuna hoş geldiniz.
 
 Ben Fatih Es, 2023 yılından bu yana AWS Certified Solutions Architect – Associate sertifikasyonuna sahip Full Stack Softwate Engineer'ım. Bu repo kapsamında AWS Certified Developer - Associate sınavına hazırlanırken aldığım notlar yer almaktadır. Umarım bu sınavlara hazırlanan veya bulut dünyasına girmek isteyen kişilere yol gösterici bir kaynak olur.
