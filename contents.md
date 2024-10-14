@@ -2,6 +2,7 @@
 
 
 - 🗂️ DVA-C02 Kurs Tanıtımı
+    - 📁 [Giriş](./intro.md)
 	- 📁 [Sıvav Yapısı](./exam-logistics.md)
 - 🗂️ [Compute](./compute.md)
 	- 📁 [AWS'de (compute) hesaplama nedir?](./compute.md#awsde-compute-hesaplama-nedir)
