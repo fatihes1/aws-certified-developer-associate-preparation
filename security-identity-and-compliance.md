@@ -2,16 +2,17 @@
 
 Bu başlık altında, geliştiriciler için AWS'deki güvenlik, kimlik ve uyumluluk hizmetlerine yakından bakacağız. Bu hizmetler aşağıda listelenmiştir:
 
--   AWS Certificate Manager (ACM),
--   AWS Certificate Manager Private Certificate Authority,
--   Amazon Cognito,
--   AWS Identity and Access Management (IAM),
--   AWS Key Management Service (AWS KMS),
--   AWS Secrets Manager,
--   AWS Security Token Service (AWS STS),
--   AWS Web Application Firewall (AWS WAF).
+-   [AWS Identity and Access Management (IAM)](#iam-özellikleri-iam-features),
+-   [Amazon Cognito](#aws-cognito),
+-   [AWS Key Management Service (AWS KMS)](#aws-kms),
+-   [AWS Certificate Manager (ACM)](#dijital-sertifikalar-ve-aws-sertifika-yöneticisi-digital-certificates-and-aws-certificate-manager),
+-   [AWS Web Application Firewall (AWS WAF)](#aws-waf),
+-   [AWS Security Token Service (AWS STS)](#aws-security-token-service-sts),
+
 
 ## IAM: Identity and Access Management
+
+![](https://private-user-images.githubusercontent.com/54971670/258652610-1eacb745-2949-411b-9f76-da3a98621952.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mjg5MDI5NTAsIm5iZiI6MTcyODkwMjY1MCwicGF0aCI6Ii81NDk3MTY3MC8yNTg2NTI2MTAtMWVhY2I3NDUtMjk0OS00MTFiLTlmNzYtZGEzYTk4NjIxOTUyLmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDE0VDEwNDQxMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM1NTc0NDIzYzM4MjViOWQyNjhkMmIxYjdjMDZkNDQzNmI2ODc4NmMyMjU3ZGUyYjBlMDIwMTVjZDNiOTI2MGQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.GdmB2VXwp7Ns1YaVcdfRPd5jAVJlz5W6mNkrWmB-Loo)
 
 Bu başlık altında, Identity & Access Management hizmetinin ne olduğuna ve IAM'in aslında ne anlama geldiğine dair genel bir giriş yapacağız.
 
@@ -370,6 +371,8 @@ Identity Pools, user pool'lardan farklıdır çünkü aslında size web veya mob
 
 ## AWS Cognito
 
+![](https://private-user-images.githubusercontent.com/54971670/258652593-b83a7721-b504-4a05-be9d-c2c178d16c5b.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mjg5MDI5NTAsIm5iZiI6MTcyODkwMjY1MCwicGF0aCI6Ii81NDk3MTY3MC8yNTg2NTI1OTMtYjgzYTc3MjEtYjUwNC00YTA1LWJlOWQtYzJjMTc4ZDE2YzViLmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDE0VDEwNDQxMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTIwMGVlNjM3ZDY0YWU2YjYyMjkxYWFlY2NkM2E4NjY5N2ZhMzlhYzU2YjUwMDM3MTAwYmE3OTkwNjU3ZjZmYzMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.MOHTr1J_hAJ8QECSLNSmgrtdeJPALov-AQytKYD02fE)
+
 Amazon Cognito, mobil veya web uygulamaları oluşturmanın en can sıkıcı kısımlarından biri kullanıcı kimlik doğrulamasıyla uğraşmaktır. Uygulamada belirli servisleri veya özellikleri kimin kullanıp kimin kullanamayacağını belirlemek son derece önemlidir. Ancak, bu işlemi kurmak zahmetli ve zaman alıcı olabilir. Geçmişte, tüm bu önemli kullanıcı bilgileri sıradan bir user database'inde saklanırdı. Bu database in-promise veya cloud'da barındırılabilirdi. Her iki durumda da, muhtemelen kullanıcı adlarını ve ilişkili izinleri tutan relational bir database olurdu. AWS dünyasında çalışırken, bu database'in ya RDS (Relational Database Service) üzerinde barındırılması ya da kendi database'inizi EC2 instance'larında çalıştırmanız anlamına gelirdi. Bu yöntemlerin herhangi birini kullanmanın zorluğu, her şeyi kurmak ve sistemi sürdürmek için çok fazla çalışma gerektirmesidir.
 
 Ayrıca, kurumsal ortamda çalışan insanların tanıdık senaryosuna da sahibiz. Tüm bilgileri zaten Microsoft Active Directory gibi bir directory service'te saklanmıştır ve yeni özel uygulamamız için bir kez daha login ve password oluşturmalarını istemeyiz. Günlük kurumsal username ve password'leri ile giriş yapabilmelerini tercih ederiz.
@@ -522,6 +525,8 @@ Simetrik şifrelemenin asimetrik üzerindeki avantajı, şifreleme ve deşifre e
 
 ## AWS KMS
 
+![](https://private-user-images.githubusercontent.com/54971670/258652611-592884a3-ff5b-4041-8954-5bdd09b4232d.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mjg5MDI5NTAsIm5iZiI6MTcyODkwMjY1MCwicGF0aCI6Ii81NDk3MTY3MC8yNTg2NTI2MTEtNTkyODg0YTMtZmY1Yi00MDQxLTg5NTQtNWJkZDA5YjQyMzJkLmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDE0VDEwNDQxMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTI4MDM4MzQwMjAxY2ZlNGNjZWRkOTkzODM5NjYzYzIwOTA1ZGFiM2QyNWEzODQ3ZDM4YWY3ZjY2OGZkMWI3MjcmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.k2aImQDmBFoiDywvX35Hc9b5qr8TkgcaFKJcR4WF7rU)
+
 Key Management Service (KMS), çoğu AWS servisinin veri şifreleme işlemlerinde kullandığı şifreleme anahtarlarını depolamak ve oluşturmak için kullanılan yönetilen bir servistir. Örneğin, Amazon S3'ü KMS tarafından üretilen anahtarları kullanarak nesnelerinize karşı veri şifrelemesi gerçekleştirmek üzere yapılandırabilirsiniz, bu KMS kullanan Sunucu Taraflı Şifreleme (SSE-KMS) olarak bilinir. Ya da RDS veritabanlarınızda depolanan verilerinizi şifrelemek için KMS'i kullanabilirsiniz. Esasen, şifreleme yetenekleri sunan herhangi bir servis, bu şifrelemeyi gerçekleştirmek için büyük olasılıkla KMS ile arayüz oluşturur.
 
 Bu servisin doğası gereği, kriptografik işlemleri gerçekleştirmek için kullanılan KMS anahtarları son derece güvenli kalmalıdır. Sonuç olarak, AWS yöneticileri ve çalışanlarının KMS içindeki anahtarlarınıza erişimi olmadığını ve onları silmeniz durumunda anahtarlarınızı sizin için kurtaramayacaklarını bilmelisiniz. AWS'nin sorumluluğu, sadece KMS'nin üzerinde çalıştığı altta yatan işletim sistemlerini ve donanım güvenlik modüllerini (HSM'ler) yönetmektir.
@@ -663,6 +668,8 @@ Ve son olarak Jorge'nin erişimine göz atalım. Key-A'ya erişimi yoktur çünk
 
 ## Dijital Sertifikalar ve AWS Sertifika Yöneticisi (Digital Certificates and AWS Certificate Manager)
 
+![](https://private-user-images.githubusercontent.com/54971670/258652605-9073f334-5497-46ab-b9ba-3af9203a5093.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mjg5MDI5NTAsIm5iZiI6MTcyODkwMjY1MCwicGF0aCI6Ii81NDk3MTY3MC8yNTg2NTI2MDUtOTA3M2YzMzQtNTQ5Ny00NmFiLWI5YmEtM2FmOTIwM2E1MDkzLmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDE0VDEwNDQxMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWE5ODQ4ZGEzYzEzZGM3NGMzYWZmMGE0NmY5ZjQzMWZlZmEzYjRlMDk0ODVmNTExMjRkZTUxZGU0MDg4Nzk0ZWQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.WM_b6GVt4Uf2NDA3ccFKSoeNNEwqbg7mSY8Truqh0uE)
+
 Bu başlık altında, dijital sertifikaların önemi ve AWS Certificate Manager'ın temel özelliklerini ele alacağız. Hepimiz onlarca yıldır dijital sertifikaları kullanıyoruz ve çoğumuz muhtemelen her gün dijital sertifikalardan faydalanıyoruz. HTTPS kullanan bir web sitesine her gittiğimizde, dijital sertifikalardan yararlanmış oluyoruz. Dijital sertifikalar ayrıca site-to-site VPN'lerde yer alan uç noktaların kimlik doğrulaması sırasında da kullanılır; böylece bir VPN tüneli kurulabilir. Bunun yanı sıra, durağan ve transit verilerin bütünlük kontrollerinin bir parçası olarak kullanılan dijital imzaların doğrulanması sırasında, çok faktörlü kimlik doğrulamanın bir parçası olarak da kullanılır.
 
 Temelde, dijital sertifikalar iletişim kurduğumuz web sitesinin, hizmetin veya kullanıcının geçerli olduğuna güvenmemizi sağlar. İletişim kurduğumuz varlığın geçerli olduğuna güveniyorsak, kimlik doğrulama yapılandırması, inkar edilemezlik yapılandırması, bütünlük kontrolleri yapılandırması (configure non-repudiation) ve şifreleme yapılandırması gibi işlemleri gerçekleştirebiliriz. Dijital sertifikalar, içlerine gömülü bir public key ile gelir. Sertifika, public key'i doğrular; yani public key'e güvenebilir, sertifikayı web sunucularıyla güvenli iletişim kurmak ve dijital sertifikaları doğrulamak gibi görevleri gerçekleştirmek için kullanabiliriz. Dijital sertifikaların kendilerine de güvenilmesi gerekir.
@@ -678,6 +685,8 @@ CRL'ler, bir CA tarafından verilmiş ancak artık güvenilmemesi gereken sertif
 AWS Certificate Manager'ın faydaları arasında; halka açık güvenilir sertifikalar ücretsiz olarak mevcuttur, key pair oluşturmaya veya CSR vermeye gerek yoktur, bunlar sertifika talebiniz sırasında otomatik olarak oluşturulacaktır, certificate authority altyapısını yapılandırmaya gerek olmaması yer almaktadır. Private bir CA oluşturduğunuzda bile, bu AWS Certificate Manager tarafından yönetilir. Yani AWS, CA'nızı barındıran sunucuların yüksek kullanılabilirliğinden, yedeklenmesinden ve günlük yönetiminden sorumludur. AWS Certificate Manager'ın en iyi özelliklerinden biri, yeni sertifikaları değiştirme yeteneğidir. Kullandıkları sertifikaların süresi dolduğu için kapanan birçok hizmet gördüm. AWS Certificate Manager kullanılırken, bu durum yaşanmamalıdır çünkü süresi dolmak üzere olan uygun sertifikaları değiştirmek için otomatik olarak yeni sertifika talepleri oluşturacak ve ardından süresi dolan sertifikaları korudukları hizmetlerin yapılandırmasında değiştirecektir.
 
 ## AWS WAF
+
+![](https://private-user-images.githubusercontent.com/54971670/258652608-e11925e2-77e4-4993-8c31-6a4e0b43303f.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mjg5MDI5NTAsIm5iZiI6MTcyODkwMjY1MCwicGF0aCI6Ii81NDk3MTY3MC8yNTg2NTI2MDgtZTExOTI1ZTItNzdlNC00OTkzLThjMzEtNmE0ZTBiNDMzMDNmLmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDE0VDEwNDQxMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM3ZDZiNjdiM2UwM2I5YzI5ZmIzZWI4ZDQ0MGE2NjExZTAwZmUwYjYyZjNkOWNlMGQ4M2RiNzRiMDZlNTAzN2QmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.OfYBcnMjmEEYEHrTtu-m_SKzRB9t4jw3XlBvQ7CVWGg)
 
 Bu başlık altında, AWS WAF servisine giriş yapacağız. CloudFront Distributions, Amazon API Gateway REST APIs, Application Load Balancers veya AWS AppSync GraphQL APIs aracılığıyla herhangi bir web içeriği sunuyorsanız, ek bir güvenlik katmanı olarak AWS Web Application Firewall servisini kullanmanız önerilir.
 

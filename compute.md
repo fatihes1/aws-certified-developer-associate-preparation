@@ -7,10 +7,10 @@ AWS'de hesaplama yani **compute** hizmetleri üzerine olan bu bölüme hoş geld
 Bu bölümde, sınavda ele alınabilecek AWS'de mevcut çeşitli hesaplama hizmetlerini tanıtan bir dizi alt başlık bulunmaktadır.
 Bu bölümün amacı, geliştiriciler için AWS'deki hesaplama hizmetlerine bir giriş sağlamaktır, bunlar:
 
-- Amazon Elastic Compute Cloud (EC2)
-- AWS Elastic Beanstalk
-- AWS Lambda
--  AWS Serverless Application Model (SAM)
+-  [Amazon Elastic Compute Cloud (EC2)](#amazon-ec2-elastic-compute-cloud)
+-  [AWS Elastic Beanstalk](#aws-elastik-beanstalk-nedir)
+-  [AWS Lambda](#aws-lambdaya-genel-bakış)
+-  [AWS Serverless Application Model (SAM)](#aws-serverless-application-aws-sam-nedir)
 
 Bu repodaki diğer başlıklarla birlikte, AWS Certified Developer - Associate sınav kılavuzundaki tüm anahtar araçları, teknolojileri ve kavramları ele alacağız ve bu sınavı tam olarak geçmeye hazır olmayı hedefleyeceğiz.
 
@@ -25,6 +25,9 @@ Basitçe söylemek gerekirse, hesaplama kaynakları (compute resources), uygulam
 AWS içinde, farklı işlevler sunmak için hesaplama gücü sağlayan birçok farklı hizmet ve özellik vardır. Bazı hizmetler, aylarca veya hatta yıllarca sürekli olarak kullanılarak milyarlarca talimatı işleyen yüzlerce EC2 örneği (instance) veya sanal sunucu kullanabilir. Ölçeğin diğer ucunda, bir olay yanıtında bir AWS Lambda işlevi içinde birkaç satır Python kodunu yürütmek için yalnızca birkaç milisaniye hesaplama kaynağı kullanmanız gerekebilir. Ardından bu süreci, hesaplama gücünü bırakabilirsiniz. Hesaplama kaynakları, geniş bir kategori yelpazesinde, farklı miktarlarda ve farklı sürelerde kullanılabilir. Çeşitli performans ve fayda seçenekleri sunar. Dolayısıyla AWS içinde kullanacağınız hesaplama kaynakları nihayetinde genel iş gereksinimlerinize bağlı olacaktır ve bu kapsamda değişiklik gösterecektir.
 
 ## Amazon EC2: Elastic Compute Cloud
+
+![219](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/62a8c20e-db27-408a-97bd-e1f0ac1c879a)
+
 
 Bu başlık altında Amazon Elastic Compute Cloud veya EC2 hizmetini tanımlayacağız. EC2, AWS ile çalışırken karşılaşacağınız ilk hesaplama hizmeti olabilir. AWS ortamınızda sanal sunucular dağıtmanıza olanak tanır ve çoğu insan en az bir çözümünün bir parçası olarak bir EC2 örneğine ihtiyaç duyar. Bir EC2 örneği oluştururken yer alan bir dizi unsur vardır ve şimdi sırayla bunları açıklayalım. Bu başlık altındaki detaylar, EC2 hizmetinin nasıl çalıştığını tanımlamamıza ve sahip olabileceğiniz birçok soruyu yanıtlamamıza yardımcı olacaktır. EC2 hizmeti şu bileşenlere ayrılabilir:
 
@@ -354,6 +357,8 @@ Programlı ölçeklendirmeyi mimarilerinize dahil edebilirseniz, size oldukça f
 
 ### AWS Elastik Beanstalk Nedir?
 
+![226](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/a8093dbd-6bcc-4758-9dd5-a8e3e80f9973)
+
 Bu başlıkta, AWS Elastic Beanstalk hizmetine genel bir bakış bulabilirsiniz. AWS Elastic Beanstalk, web uygulamanızın kodunu ortam yapılandırmalarıyla (environment configurations) birlikte yüklemenize olanak tanıyan yönetilen bir hizmettir. Elastic Beanstalk'ın web uygulamasını çalışır hale getirmek için AWS içinde gerekli olan uygun ve gerekli kaynakları otomatik olarak sağlamasına ve dağıtmasına olanak tanır. Bu kaynaklar, kapasite sağlamanın yanı sıra EC2, otomatik ölçeklendirme (auto scaling), uygulama sağlığı izleme ve elastik yük dengeleme (elastic load balancing) gibi diğer AWS hizmetlerini ve özelliklerini içerebilir. Bu otomasyon ve basitleştirme, geliştirilen uygulamaları çalıştırmak için doğru ortamı kendileri dağıtmak, sağlamak, izlemek ve ölçeklendirmek için AWS içinde aşinalık veya gerekli becerilere sahip olmayan mühendisler için ideal bir hizmet haline getirir. Bunun yerine, yüklenen kodu çalıştırmak için doğru altyapıyı dağıtma sorumluluğu AWS Elastic Beanstalk'a devredilir. Bu, web uygulamanızı dağıtmak için basit, etkili ve hızlı bir çözüm sağlar.
 
 Uygulama çalışır duruma geldikten sonra, özel oluşturulmuş bir ortamda olduğu gibi ortamı desteklemeye (support) ve sürdürmeye (maintain) devam edebilirsiniz. Ayrıca bazı bakım görevlerini Elastic Beanstalk panelinden gerçekleştirebilirsiniz. AWS Elastic Beanstalk, çeşitli platformlar ve programlama dilleriyle çalışabilir, bu da onu devops ekibiniz için çok esnek bir hizmet haline getirir. Şu anda, bu repo'nun yazıldığı sırada, Elastic Beanstalk şu listeyle uyumludur: Packer Builder, Single Container Docker, Multi Container Docker, Önceden Yapılandırılmış (Preconfigured) Docker, Go, Java SE, Tomcat ile Java, IIS ile Windows Server üzerinde .NET, Node.js, PHP, Python ve Ruby.
@@ -575,6 +580,8 @@ Artık AWS Elastic Beanstalk hizmetinin ne olduğu ve ne için kullanıldığı,
 
 
 ## AWS Lambda'ya Genel Bakış
+
+![227](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/f4769e0f-5ab3-459c-b7ee-0421cb3ad958)
 
 Sunucusuz hesaplamayı gerçekten anlamak için önce sunucuları anlamanız gerekir. Örneğin, bir EC2 instance'ını çalıştırmak için gereken tüm işleri düşünün: 
 - Yazılım yüklemeniz (Instalation), 
@@ -798,6 +805,8 @@ Bunlara konsolda bakalım, 'View logs ing CloudWatch' butonuna tıklayacağız. 
 Buradaki bazı ifadeler, fonksiyonuma eklediğim özel log kaydı tutma ifadeleridir. Örneğin, fonksiyonuma iletilen olayı yazdırmak için Python'da print fonksiyonunu kullanmıştık. Bu ifade, şimdi log kayıtlarımızda gördüğümüz çıktıyı üretir. Bu log kaydı tutma ifadeleri, varsayılan olarak gönderilen yönetilen mesajlara ek olarak verileri otomatik olarak CloudWatch log kayıtlarına göndermek için kullanılır. Bu dile bağlıdır, bu yüzden farklı bir çalışma zamanı (run-time) kullanıyorsanız bunu aklınızda tutun, bu özel log kaydı tutma ifadeleri için uygun sözdizimini araştırmak isteyebilirsiniz.
 
 ## AWS Serverless Application (AWS SAM) Nedir?
+
+![229](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/e11e3688-054f-44b6-b81f-c8ee74e02543)
 
 AWS SAM'e geçmeden önce, öncelikle sunucusuz bir uygulamanın ne olduğunu anlayalım. Bunu bir uygulama olarak düşünün; sadece kodunuzu oluşturmaya odaklanıyorsunuz, kodunuzu sunucular hakkında endişelenmeden çalıştıran. Sunucusuz'un (serverless) hiç sunucu kullanılmadığı anlamına gelmediğini, sadece bu sunucuları kendinizin yönetmek zorunda olmadığınız anlamına geldiğini fark etmek önemlidir. Sunucusuz bir uygulama sadece AWS Lambda fonksiyonlarıyla sınırlı değildir. Genellikle kodu çalıştırmak için Lambda, kodunuzu tetikleyen olay kaynakları (event source) ve bilgi depolamak için veritabanları gibi diğer parçaları da içerir. AWS'de, sunucusuz bir uygulama tipik olarak herhangi bir sunucuyu yönetmenizi gerektirmeden işbirliği (collaborate) yapan birden fazla hizmeti içerir. Bir backend uygulamasını instance olarak ele alırsak, kod çalıştırmak için Lambda, kullanıcı isteklerini işlemek için API Gateway, veri depolamak için S3 ve veritabanı ihtiyaçları için DynamoDB kullanabilir. Önemli nokta şudur ki, tüm bu hizmetlerin sunucu yönetimini hizmetin otomatik olarak sizin için halletmesidir. Yani fiziksel sunucuları veya sanal makineleri kurmak, bakımını yapmak veya ölçeklendirmek konusunda endişelenmenize gerek yoktur.
 

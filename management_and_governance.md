@@ -2,16 +2,20 @@
 
 Bu başlık altında bulunan konular, geliştiriciler için AWS'deki yönetim ve denetim hizmetlerine bir giriş sağlamaktır. Başlığın genel kapsamında, aşağıda listelenen servislere değineceğiz:
 
--   AWS AppConfig,
--   AWS Cloud Development Kit (AWS CDK),
--   AWS CloudFormation,
--   AWS CloudTrail,
--   Amazon CloudWatch,
--   Amazon CloudWatch Logs,
--   AWS Command Line Interface (AWS CLI), 
--   AWS Systems Manager.
+-   [Amazon CloudWatch](#cloudwatch),
+-   [AWS CloudTrail](#cloudtrail),
+-   [AWS CloudFormation](#aws-cloudformation),
+-   [Amazon CloudWatch Logs](#cloudwatch-logging-agent),
+-   [AWS Command Line Interface (AWS CLI)](#aws-ile-program-tabanlı-çalışma-operating-programmatically-with-aws),
+-   [AWS Systems Manager](#aws-systems-manager),
+-   [AWS AppConfig](#aws-appconfig),
+-   [AWS Cloud Development Kit (AWS CDK)](#aws-cloud-development-kit-cdk),
+
 
 ## CloudWatch
+
+![183](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/37b50565-3a7f-4f87-bdc6-caede41ef561)
+
 
 Bu başlık altında, Amazon CloudWatch'un ne olduğu ve ne yaptığı hakkında üst düzey bir genel bakışa sahip olacaksınız.
 
@@ -235,6 +239,9 @@ Birçok kişi, kullanımı oldukça basit olduğu ve dışarıda çok sayıda ö
 
 
 ## CloudTrail
+
+![188](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/06a817ee-b637-4058-b5a1-43062ada7cac)
+
 
 AWS CloudTrail, temel işlevi AWS hesabınız içinde yapılan AWS Application Programming Interface (API) isteklerinin yanı sıra API olmayan istekleri de kaydetmek ve izlemek olan bir servistir. Bu olaylar, bir kullanıcının SDK kullanarak başlattığı programatik istekler, AWS komut satırı arayüzü, AWS yönetim konsolundan veya başka bir AWS servisi tarafından yapılan bir istek olabilir. Örneğin, EC2 auto-scaling yeni bir EC2 instance oluşturmak için tetiklendiğinde, instance'ı başlatmak için servis tarafından bir API isteği yapılır. Bu API istekleri CloudTrail tarafından kaydedilir ve izlenir.
 
@@ -473,6 +480,9 @@ Oluşturduğunuz herhangi bir sorgu kaydedilebilir ve daha sonraki bir tarihte k
 
 ## AWS CloudFormation
 
+![187](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/d64f6cd5-321f-493b-97ba-365996646644)
+
+
 AWS Console'dan hiç yinelenen şeyler yaptığınızı fark ettiniz mi? Tek bir EC2 instance oluşturmak için AWS Console'da 20 ekran boyunca tıklayarak gününüzü geçirdiniz olmuştır. Sonra user data'yı yanlış girdiğiniz için hayal kırıklığına uğrayıp, düzeltmek için 20 ekran daha tıklamış olmanız da muhtemeldir. 
 
 Bu durumlara çözüm olarak, AWS CloudFormation kullanmanızı önerebilirim. Çünkü kaynakları manuel olarak oluşturmak zaman alıcı ve genellikle hataya açıktır. Bu yüzden bu süreci mümkün olduğunca otomatikleştirmek istersiniz. "Eh, bunu yapmak için CLI'yi kullanabilirim" diye düşünüyor olabilirsiniz. CLI veya API çağrıları ile AWS kaynaklarının oluşturulmasını otomatikleştirebilseniz de, bu kaynakları güncellemek yine de çoğunlukla manuel olacaktır.
@@ -629,6 +639,8 @@ Ancak diyelim ki, felaket kurtarma amacıyla tam olarak aynı altyapıyı başka
 CloudFormation ile, altyapınızı **stack** adı verilen bir şeyde temsil eden şablonlar oluşturursunuz. Başlamak için AWS, indirmeniz ve özelleştirmeniz için birçok örnek şablon (template) sunar. Daha sonra bu şablonları, bir stack içinde bulunan tüm kaynakları tekrarlanabilir, tutarlı bir şekilde hızlıca sağlamak için kullanabilirsiniz. 
 
 ## AWS Systems Manager
+
+![](https://private-user-images.githubusercontent.com/54971670/259370707-83726515-d1b4-4724-9088-b229f9f04e2f.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mjg5MDIyNTUsIm5iZiI6MTcyODkwMTk1NSwicGF0aCI6Ii81NDk3MTY3MC8yNTkzNzA3MDctODM3MjY1MTUtZDFiNC00NzI0LTkwODgtYjIyOWY5ZjA0ZTJmLmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDE0VDEwMzIzNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTgzZDM4ZTgwYmI4MjI1YTU4MDAyNWUwNWU1N2E0MmM4N2ZiYTM3M2MwMTI1NWM1MGY3MWUwYzRkZDBiYWZmMTQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.ICNd90sv5TdelvZuh6JRfobOgHkXVNGRHeudFt-Hp60)
 
 Bu başlık altında, özellikleri ve kullanım senaryoları da dahil olmak üzere AWS Systems Manager'a genel bir göz atacağız. Systems Manager, Amazon EC2, kendi veri merkeziniz veya diğer cloud platformlarında çalışan tüm Linux ve Windows instance'larınızda güvenli ve ölçeklenebilir sistem yapılandırmasını, sürekli yönetimini sağlayan tam yönetilen AWS servisler kümesidir. Otomasyona odaklanması, yönetmek istediğiniz instance'ları seçebileceğiniz ve gerçekleştirmek istediğiniz görevleri tanımlayabileceğiniz sistemlerin yapılandırılmasını ve yönetilmesini sağlar.
 

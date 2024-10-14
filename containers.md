@@ -2,10 +2,10 @@
 
 Bu başlığın amacı, geliştiriciler için AWS'deki container hizmetlerine bir giriş sağlamaktır. Bu hizmetler aşağıda listelenmiştir:
 
--   AWS Copilot,
--   Amazon Elastic Container Registry (Amazon ECR)
--   Amazon Elastic Container Service (Amazon ECS)
--   Amazon Elastic Kubernetes Services (Amazon EKS)
+-   [Amazon Elastic Container Service (Amazon ECS)](#ecs-elastic-container-service)
+-   [Amazon Elastic Container Registry (Amazon ECR)](#ecr-elastic-container-registry)
+-   [Amazon Elastic Kubernetes Services (Amazon EKS)](#eks-elastic-kubernetes-service)
+-   [AWS Copilot](#aws-copilot)
 
 
 ## Mikro Hizmetlere, Konteynerlere ve ECS'ye Giriş (Introduction to Microservices, Containers, and ECS)
@@ -138,6 +138,8 @@ Serverless ve servered containerlar arasında seçim yapmak kolay bir görev de�
 
 ## ECS: Elastic Container Service
 
+![47](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/27ba0ed3-dfad-4bcb-9f98-5ba0af94956d)
+
 ECS hizmeti, karmaşık ve yönetimsel olarak ağır bir cluster yönetim sistemini yönetmenizi gerektirmeden, Docker destekli uygulamaları container'lar olarak paketlenmiş şekilde EC2 instance'larından oluşan bir cluster genelinde çalıştırmanıza olanak tanır. Kendi cluster yönetim sisteminizi yönetme yükü, bu sorumluluğu AWS'ye, özellikle AWS Fargate kullanımı yoluyla devrederek Amazon ECS hizmeti ile soyutlanır.
 
 Docker, container'lar ve AWS Fargate gibi bazı bu terimlere yeniyseniz, bu hizmeti biraz daha kolay anlamanıza yardımcı olmak için bunların ne olduğunu hızlıca, tek bir cümlede tanımlayalım. **AWS Fargate**, ECS'nin container'lar için instance'ları ve cluster'ları yönetmek ve sağlamak zorunda kalmadan container'ları çalıştırmasını sağlayan bir motordur. **Docker**, uygulamaların Linux Container'ları içinde kurulumunu ve dağıtımını otomatikleştirmenizi sağlayan bir yazılım parçasıdır. Peki container'lar nedir? Bir **Container**, bir uygulamanın izole container paketi içinden çalışmasını sağlamak için gereken her şeyi içerir. Bu, sistem kütüphanelerini, kodu, sistem araçlarını, çalışma zamanını vb. içerebilir; ancak bir sanal makine gibi bir işletim sistemi içermez ve böylece container'ın kendisinin gerçek yükünü azaltır.
@@ -157,6 +159,8 @@ Cluster'ların kendileri, CPU ve bellek gibi kaynakları birleştiren bir kaynak
 
 
 ## ECR: Elastic Container Registry
+
+![46](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/07c243aa-67eb-4cb5-bd65-6d5ef537a405)
 
 ECR hizmeti, daha önce bahsedilen EC2 Container Service ile yakından bağlantılıdır, çünkü uygulamalarınız genelinde dağıtılabilen ve konuşlandırılabilen docker image'larınızı güvenli bir şekilde depolamak ve yönetmek için bir konum sağlar.
 
@@ -191,6 +195,8 @@ Docker Push: [https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push
 Docker Pull: [https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-pull-ecr-image.html](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-pull-ecr-image.html)
 
 ### EKS: Elastic Kubernetes Service
+
+![48](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/64f004f8-7fb6-4cf9-9a50-006f4f621489)
 
 Öncelikle, Kubernetes'e aşina olmayanlar için, basit düzeyde ne olduğunu kısaca açıklayayım. Kubernetes, konteynerleştirilmiş uygulamaları otomatikleştirmek, dağıtmak, ölçeklendirmek ve çalıştırmak için tasarlanmış açık kaynaklı bir konteyner orkestrasyon aracıdır. Onlarca, binlerce, hatta milyonlarca konteynere kadar büyüyecek şekilde tasarlanmıştır. Kubernetes ayrıca konteyner-runtime agnostic'tir, yani Kubernetes'i rocket ve docker konteynerlerini çalıştırmak için kullanabilirsiniz.
 
@@ -228,6 +234,8 @@ EKS Cluster'ınız ve worker node'larınız artık uygulamalarınızı Kubernete
 
 
 ## AWS Copilot
+
+![49](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/f737ddb7-326c-47c2-9066-4b1856f0fc14)
 
 AWS Copilot, altyapı kurulumu ve dağıtımı için en iyi uygulama rehberliğini de içerirken, AWS üzerinde konteynerleştirilmiş uygulamaların geliştirilmesini, dağıtımını ve yönetimini basitleştiren bir komut satırı arayüzü veya CLI aracıdır. Copilot, Windows, Linux ve macOS için kullanılabilir. Copilot'u, Dockerfile'ı olan herhangi bir konteyner uygulamasını oluşturmak ve dağıtmak için kullanabilirsiniz. Copilot ile geliştiriciler, load balancer'lar gibi altyapıyı manuel olarak yapılandırmaya veya yönetmeye gerek kalmadan, sağlam, üretime hazır konteynerleştirilmiş uygulamaları Fargate üzerinde ECS'ye kolayca oluşturabilir, yapılandırabilir ve dağıtabilir.
 

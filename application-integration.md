@@ -2,13 +2,15 @@
 
 Bu başlık altında, geliştiriciler için AWS'deki uygulama entegrasyon hizmetlerine giriş yapacağız. Bu hizmetler aşağıda listelenmiştir:
 
--   AWS AppSync,
--   Amazon EventBridge (Amazon CloudWatch Events),
--   Amazon Simple Notification Service (Amazon SNS),
--   Amazon Simple Queue Service (Amazon SQS),
--   AWS Step Functions.
+-   [Amazon EventBridge (Amazon CloudWatch Events)](#eventbridge),
+-   [AWS Step Functions](#aws-step-functions),
+-   [Amazon Simple Queue Service (Amazon SQS)](#kuyruk-hizmetleri-ile-decoupling-uygulamaları-decoupling-applications-with-queuing-services),
+-   [Amazon Simple Notification Service (Amazon SNS)](#sns-simple-notification-service),
+-   [AWS AppSync](#aws-appsync),
 
 ## EventBridge
+
+![168](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/0008276c-79cb-4d4e-b3ea-9f8b4d131af6)
 
 Zaman içinde sistemlerinizi ve mimarilerinizi inşa etmenin birçok yolu olmuştur. AWS eğitiminiz boyunca öğrendikçe ve geliştikçe, birkaç farklı metodoloji ile karşılaşacaksınız. Yolculuğunuza ilk başladığınızda, amacınız sadece çalışan bir şey inşa etmek olan çok katı monolitik sistemlerle başlayabilirsiniz. Bu sistemlerin özünde, birbirine çok sıkı bağlı olma sorunu vardır ve bir parçası başarısız olursa, belki de tümü başarısız olabilir. Ayrıca, bu sistemleri uygun şekilde ölçeklendirmek son derece zordur çünkü hepsi birbirine kilitlenmiştir. Sistemin bir parçası çok fazla yük alıyorsa, ne yazık ki tüm sistem birlikte ölçeklendirilmek zorundadır ve bu israf yaratabilir.
 
@@ -164,6 +166,8 @@ Ancak sorunlardan biri, tek bir akışa bağlanabilen consumer sayısında bir s
 
 ## AWS Step Functions
 
+![173](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/1ebb87a8-0e0f-4bf2-bbe0-6551158d2790)
+
 Amazon Web Services ve serverless iş yükleri düşünüldüğünde akla gelen ilk seçenek AWS Lambda'dır. Lambda, altta yatan hesaplama altyapısının yüküyle uğraşmak zorunda kalmadan serverless hesaplama yapmanıza olanak tanıyan harika bir kaynaktır.
 
 Ne yazık ki, Lambda esnekliği ve uzun süreli karmaşık işlemleri gerçekleştirme yeteneği ile pek tanınmaz. Örneğin, Lambda uzun süre kodunuzun yürütme süresini 5 dakika ile sınırlandırmıştı ve bu süre yakın zamanda 15 dakikaya çıkarılmıştır.
@@ -304,6 +308,8 @@ Ingestinden sonra, video işlenir ve çeşitli bit hızlarına ve boyutlara dön
 
 ## Kuyruk Hizmetleri ile Decoupling Uygulamaları (Decoupling Applications with Queuing Services)
 
+![172](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/553673f0-9645-43e8-8585-e1c47018e148)
+
 Genellikle ayrıştırma (decoupling) fikri tanıtıldığında, uygulama geliştirme ve mesajlaşma servisleri bağlamında ortaya çıkar, o halde bununla başlayalım. Bir uygulamayı ayrıştırmak tam olarak ne anlama gelir?
 
 Ayrıştırılmış bir uygulama, her bileşenin görevlerini bağımsız olarak gerçekleştirmesine olanak tanır. Bileşenlerin tamamen otonom olmasını ve birbirinden habersiz kalmasını sağlar. Bir bileşendeki değişiklik, başka bir yerde değişiklik gerektirmemelidir. Daha da önemlisi, uygulamanın bir katmanındaki bir hata diğer katmanlara yayılmamalı, bileşen arızasının meydana geldiği yerde izole kalmalıdır. Sıkı bağlı bir uygulamayı düşünün. Bir transcode katmanını çağıran bir alma katmanı (received layer) tanımlayabiliriz, bu da yayınlama (published) ve bildirim (notified) katmanını çağırır. Bu, basit bir üç katmanlı görüntü işleme uygulaması olacaktır. Bu tür bir uygulamada, katmanlardan birindeki bir hata, sonraki katman üzerinde olumsuz bir etki yaratabilir ve tüm uygulamanın işleyişini bozabilir.
@@ -335,6 +341,8 @@ Bir mesajın başarıyla işlenmediğinde ne olduğuna zaten değindik. Temel ol
 Bir mesaj `ReceiveMessage` isteği tarafından her alındığında, o queue için receive count bir artırılır. Bu önceden tanımlanmış limite ulaşmak, mesajı normal dolaşımdan çıkaracak ve neden işlenemediğinin incelenmesi için dead letter queue'ya yerleştirecektir. Sorun giderildikten sonra, dead letter queue redrive özelliğini kullanarak mesajı onu teslim eden queue'ya geri taşıyabilirsiniz. Bu durumda dead letter queue'ların potansiyel olarak FIFO queue'lardaki mesaj sırasını bozabileceğini unutulmamalıdır. Redrive allow policy, kaynak queue'ları ve bunlara karşılık gelen dead letter queue'ları ve ayrıca mesajları bir queue türünden diğerine taşıma koşullarını tanımlayan kaynaktır. Bu nedenle, dead letter queue'ların dikkatle izlenmesi ve gelen mesajların ya lambda function gibi otomatik işlevsellik ya da insan incelemesi yoluyla mümkün olan en kısa sürede incelenmesi önemlidir. Bu, bir messaging service şeklinde bildirim mekanizması gerektirecektir. Simple Notification Service veya SNS, bildirimleri göndermek ve aynı anda otomatik düzeltmeyi ve push notifications yoluyla insan müdahalesini tetiklemek için SQS ile birlikte yaygın olarak kullanılır.
 
 ## SNS: Simple Notification Service
+
+![171](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/d1181ead-32d8-4d3c-b5fb-e2600cd88d0f)
 
 Simple Notification Service yani SNS, bir-çok mesaj dağıtım modelini kullanır ve uygular. Tek bir mesaj bir topic'e yayınlanır ve bu mesaj topic'in bir veya daha fazla subscriber'ına iletilir. Bu durumda, posta kutusuna benzer etkileşim noktasına topic denir. Mesaj üreten uygulamalara publisher, mesajları alan sistemlere ise subscriber denir. Bir topic, queue'lar gibi mesajları depolamaz; topic'te mesaj korunması yoktur. Bir mesaj bir topic'e yayınlandığında, mesaj tüm mevcut subscriber'lara iletilir. Mesaj yayınlandıktan sonra, mesajı geri çağırmak için bir mekanizma yoktur. SNS, Apple push notification service (iOS ve macOS 10 için), Windows push notification service, Amazon device messaging, Baidu cloud push mekanizması ve Firebase cloud messaging dahil olmak üzere desteklenen birçok push notification servisinden birini kullanarak mobil cihazlara ve masaüstü bilgisayarlara push notification mesajları gönderebilir.
 
@@ -369,6 +377,8 @@ AWS Cloud'un cazibesi ve popülaritesi artmaya devam ederken, mevcut veri merkez
 Servisin fikri, kodunuzu yeniden yazmak zorunda kalmadan mesajlaşma ve uygulamalarınızı taşımanızı sağlamaktır. Amazon MQ, broker instance ve storage için ihtiyacınız oldukça ödeme yapmanız açısından maliyet etkindir. Servis, yönetim ve bakım açısından otomatikleştirilmiştir ve bir bölgede yüksek kullanılabilirliğe sahiptir. Diğer birçok AWS servisinde olduğu gibi, storage birden fazla availability zone üzerinde uygulanır ve otomatik failover ile aktif ve yedek konfigürasyonlar uygulayabilirsiniz. Amazon MQ ayrıca SSL kullanarak transit halindeki mesaj şifrelemesi ve AES 256 şifreleme kullanarak durağan haldeki mesaj şifrelemesi sağlar. Message broker instance'ınızın ağ izolasyonu, Amazon VPC'nizdeki özel bir endpoint kullanılarak ve ağ erişilebilirliğini kontrol etmek için security group'lar yapılandırılarak uygulanabilir. Servis, mevcut kuyruklar, topic'ler ve broker'ın kendisi üzerindeki metriklerin izlenmesi için Amazon CloudWatch ile sorunsuz bir şekilde entegre olur. Ayrıca logging için AWS CloudTrail ile entegre olur. Halihazırda bir message broker kullanan mevcut uygulamaları taşırken ve uygulamalarınızı yazıldığı gibi tutmak istediğinizde Amazon MQ'yu düşünün.
 
 ## AWS AppSync
+
+![211](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/5544c86d-983a-418e-9fbf-c4b18c528a51)
 
 Bu başlık altında kısaca AWS AppSync'i tanıtacağız. AWS AppSync, serverless GraphQL ve pub/sub API'leri geliştirmeyi kolaylaştıran tam yönetilen bir servistir. Bu API'ler, DynamoDB tabloları, Amazon OpenSearch Service veya herhangi bir HTTP veri kaynağı dahil olmak üzere birden fazla kaynakta depolanan verilere erişebilir ve bunların tümünü tek bir network isteğinde birleştirebilir. Ayrıca, sık değişmeyen verilere düşük latency ile erişim için server-side in-memory caching sağlar.
 

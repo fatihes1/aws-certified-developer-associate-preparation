@@ -3,17 +3,19 @@
 Bu başlık altında, AWS sınavda karşınıza çıkabilecek AWS'de mevcut olan çeşitli veritabanı hizmetlerini tanıtan bir dizi alt başlık olarak aktarılacaktır.
 
 Bu başlığın amacı, geliştiriciler için AWS'deki veritabanı hizmetlerine bir giriş sağlamaktır. Bu hizmetler aşağıdaki gibi listelenebilir:
+- [Amazon DynamoDB](#amazon-dynamodb-nedir-what-is-amazon-dynamodb-),
+- [Amazon RDS](#amazon-ilişkisel-veritabanı-hizmeti-amazon-relational-database-service),
+- [Amazon Aurora](#amazon-aurora-yüksek-kullanılabilirlik-seçenekleri-amazon-aurora-high-availability-options),
+- [Amazon ElastiCache](#elasticache-genel-bakış-elasticache-overview),
+- [Amazon MemoryDB for Redis](#amazon-memorydb-for-redis),
 
--   Amazon Aurora,
--   Amazon DynamoDB,
--   Amazon ElastiCache,
--   Amazon MemoryDB for Redis,
--   Amazon RDS.
 
 AWS Certified Developer - Associate sertifikasyonu, AWS hizmetlerini kullanarak uygulama geliştirme, test etme, dağıtma ve hata ayıklama konusunda bilgi ve deneyime sahip geliştirici rolündeki herkes için tasarlanmıştır.
 
 
 ## Amazon DynamoDB Nedir (What Is Amazon DynamoDB) ?
+
+![176](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/5c708e3f-bca0-4496-b370-5615584aa3e4)
 
 Amazon DynamoDB, tam yönetilen, serverless bir NoSQL veritabanı servisidir. Bu tanım çok yüzeysel kalabilir. Gelin bu tanımı parçalara ayırarak inceleyelim.
 
@@ -478,6 +480,8 @@ Ancak gerçekten yapabileceğiniz en iyi şey, partition'larınızı nispeten k�
 
 ## Amazon İlişkisel Veritabanı Hizmeti (Amazon Relational Database Service)
 
+![181](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/4de5b211-2534-4bb9-b2c6-54dc4c3dcfc8)
+
 Bu başlık altında, AWS veritabanı hizmetlerinden olan ve yaygın olarak RDS olarak bilinen Amazon Relational Database Service'i derinlemesine inceleyeceğiz. Hizmetin nasıl yapılandırıldığı hakkında genel bir fikir vermek için bir dizi farklı ortak özelliğine göz atacağız. Adından da anlaşılacağı gibi, AWS içinde ilişkisel bir veritabanını provision etmek, oluşturmak ve ölçeklendirmek için basit bir yol sağlayan bir ilişkisel veritabanı hizmetidir. Bu, sıradan idari operasyonların çoğunu elinizden alan ve bunun yerine AWS tarafından yönetilen bir managed servistir. Örneğin, yedeklemeler ve seçtiğiniz veritabanı motoru yazılımının yanı sıra altta yatan işletim sisteminin güncellenmesi gibi işlemler AWS tarafından yönetilir.
 
 Amazon RDS, farklı veritabanı motorları arasından seçim yapmanıza olanak tanır. Güncel olarak şu seçenekler vardır: 
@@ -572,6 +576,8 @@ Genel olarak, RDS Proxy serverless uygulamalar için çok faydalıdır, çünkü
 
 ## Amazon Aurora Yüksek Kullanılabilirlik Seçenekleri (Amazon Aurora High Availability Options)
 
+![174](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/b0a4a394-d739-4ba3-9be7-b715f8ba017f)
+
 Bu başlık altında, Amazon Aurora içinde mevcut olan HA (High Availability - Yüksek Kullanılabilirlik) yapılandırma seçenekleri hakkında bilgi edineceğiz. Bu seçenekleri bilmek ve nasıl uygulanacağını anlamak, uygulamalarınızın maksimum çalışma süresiyle (uptime) çalışmasını sağlayacaktır.
 
 Başlangıç olarak, genellikle AWS'nin en hızlı büyüyen hizmeti olarak anılan Amazon Aurora, üstün MySQL ve Postgres engine uyumlu performans sağlayan bir veritabanı hizmetidir. Compute layer'ı, storage layer'dan ayıracak şekilde tasarlanmıştır. Compute layer ve storage layer'ı birbirinden ayırmak, verilerinizin kullanılabilirliğini artırıp azaltmanıza olanak ve bu işlemi de read replica'ların kolayca eklenip çıkarılabilmesi ile sunan kilit bir mimari olarak düşünülebilir.
@@ -651,6 +657,8 @@ Genel olarak caching fikri, uygulamalarınız ile ilgili veri depoları arasına
 Bu, okuma ağırlıklı iş yüklerinizde gecikmeyi ve throughput'u iyileştirir. Sosyal medya, oyun, medya paylaşımı ve haber siteleri, büyük ölçüde caching'e dayanan uygulama kullanım örnekleridir. Bellek içi veri katmanı, büyük veri kümelerine birden fazla node üzerinde yüksek hızda erişilmesi gereken yüksek performanslı bilgi işlem için de kritik öneme sahiptir. Bu tür kullanım senaryoları için alternatif yoktur. Disk tabanlı erişimin gecikmesi, bu tür uygulamalar için bir darboğaz (bottleneck) oluşturacaktır.
 
 ## ElastiCache Genel Bakış (ElastiCache Overview)
+
+![177](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/a46cc324-8f2c-4994-ba46-5550f2a69044)
 
 Amazon ElastiCache, bellek içi bir cache'in dağıtımını ve işletilmesini kolaylaştıran bir web servisidir. ElastiCache API'si, makinelerin oluşturulması, yazılım kurulumu dahil olmak üzere bellek içi bir cache kurma prosedürünü yönetir. Bununla beraber, yazılım güncelleme, hata tespiti ve kurtarma gibi operasyonel detayları otomatikleştirir. ElastiCache, Amazon EC2 ve Amazon RDS, CloudFormation, Elastic Beanstalk ve AWS OpsWorks ile entegre olur. Ayrıca, sorunları daha hızlı değerlendirmeniz ve teşhis etmeniz için cache cluster'ınız hakkında ayrıntılı izleme metriklerini Amazon CloudWatch'a gönderir. Amazon ElastiCache, hem **Memcached** hem de **Redis**'in key-value bellek içi motorlarını (engine) destekler. Yaygın idari görevler açısından önemli miktarda otomasyonu hazır olarak sunar.
 
@@ -752,6 +760,8 @@ Cache node'larınız arasında CPU kullanımında büyük bir farklılık gözle
 Cache'e kullanıcılar, gruplar ve erişim kontrollerini destekleyen Redis'in özel durumunda, Amazon CloudWatch'a raporlanan güvenlik metrikleri, Redis cluster'ına kimlik doğrulama başarısız (AuthenticationFailures) girişimlerini gösteren kimlik doğrulama hatalarıdır. Ayrıca, kullanıcıların izinsiz anahtarlara erişim (KeyAuthorizationFailures) girişimlerini gösteren anahtar yetkilendirme hatalarını da alırsınız. Son olarak, kullanıcıların Redis cluster'ında izinsiz komut çalıştırma (CommandAuthorizationFailures) girişimlerini gösteren komut yetkilendirme hatalarını da alırsınız.
 
 ## Amazon MemoryDB for Redis
+
+![179](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/05ba4900-423e-4b6b-9127-edf5d5bb05c0)
 
 Bu başlık altında, Amazon MemoryDB for Redis'i tanıyacağız. Amazon MemoryDB for Redis, popüler açık kaynaklı Redis veri yapısı deposuyla uyumlu, tamamen yönetilen bir bellek içi veri depolama hizmetidir. Bellekte depolanan verilere ultra hızlı, düşük gecikmeli erişim sağlamak için tasarlanmıştır. Mikrosaniye okuma ve tek haneli milisaniye yazma gecikmeleri sunar.
 

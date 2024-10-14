@@ -57,13 +57,6 @@ AWS sertifikasyon sınavlarını oluşturan kişiler, sınavda öğretici ifadel
 Örneğin, bu bir soruda: "Kuruluşunuz AWS Lambda'yı kullanıyor, bu, sunucu sağlamadan veya yönetmeden kod çalıştırmanıza olanak tanıyan bir hesaplama hizmetidir." gibi bir öğretici ifade olması durumunda; aynı sınavda başka bir soru, hangi hizmetin sunucu sağlamadan veya yönetmeden kod çalıştırmanıza izin vereceğini sorsa, yanıtı bilmeyen kişiler bile sınavın kendisi yanıtı verdiği için doğru yanıtlayabilir. AWS sınavlarında bu tür öğretici ifadeler görmek neredeyse imkansızdır. Nadiren, herhangi bir soru başka birine yardımcı olmuştur; hatta bir hafızayı tetikleyerek bile. Bittiğinde ise, sınavı bitir butonunu kullanırsınız.
 
 Bittiğinizde, emin olup olmadığınız sorulacak. Sınav sona ermeden önce sanırım üç kez size uyarı verecektir.
-- "Gerçekten emin misiniz?" Evet, eminim. <tıkla>
-- Sonra tekrar soracak, "Gerçekten emin misiniz? Geri dönüş yok."
-- Evet, eminim. Neden bana işkence ediyorsun? <tıkla>
-- Son olarak, "Gerçekten, gerçekten emin misiniz?"
-- Evet, eminim. Lütfen alay etmeyi bırak. Bitmesini istiyorum. <tıkla>
-
-Tamam, belki bunlar gerçek istemler değil. Ancak her sınav deneyiminden sonra böyle hissedebilirsiniz 😅 O üçüncü uyarıdan sonra, sınavı geçip geçmediğinizi öğreneceğinizi düşünebilirsiniz. Ancak üzgünüm ki yanılırsınız.
 
 Sonrasında bir anket doldurmanız istenecektir. Geçip geçmediğimi bilmek istiyorsunuz. Ancak, AWS'deki insanlar sınavın yeteneklerimi doğru bir şekilde temsil edip etmediğini bilmek istiyorlar.
 

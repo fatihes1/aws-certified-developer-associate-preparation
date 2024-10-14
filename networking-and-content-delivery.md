@@ -4,13 +4,18 @@ Bu başlık altında, şu anda AWS'de mevcut olan çeşitli **ağ iletişimi ve 
 
 Bu başlığın temel amacı, geliştiriciler için AWS'deki ağ iletişimi ve içerik dağıtım hizmetlerine bir giriş sağlamaktır. Bu başlık altında değineceğimiz hizmetler şu şekilde listelenebilir:
 
--   Amazon API Gateway,
--   Amazon CloudFront,
--   Elastic Load Balancing,
--   Amazon Route 53, ve
--   Amazon VPC.
+
+-   [Amazon VPC](#vpc-nedir-what-is-a-vpc-),
+-   [Amazon CloudFront](#amazon-cloudfront),
+-   [Amazon Route53](#amazon-route-53),
+-   [Amazon API Gateway](#api-gateway),
+-   [Elastic Load Balancing](#elastic-load-balancer-elb),
+
 
 ## VPC nedir (What is a VPC) ?
+
+![28](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/ca26124e-c186-4793-85df-b640ced64b00)
+
 
 Bu başlık altında Virtual Private Clouds'lere (VPC) yakından bakacağız. VPC'nin ne olduğunu anlamak için, hadi AWS altyapısına bir göz atalım.
 
@@ -181,6 +186,9 @@ Kısaca özetlemek gerekirse, NAT Gateway, private subnet içindeki instance'lar
 
 ## Amazon CloudFront
 
+![26](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/7f8b1368-34c7-4782-b40f-1047759377b5)
+
+
 Bu başlık altında, Amazon CloudFront'un amacını ve temel özelliklerini inceleyeceğiz. CloudFront'un ana rolü içerik önbelleğe almadır. Önbelleğe alma (caching), içeriğimizi ona ihtiyaç duyan kullanıcılara daha yakın depolamamıza olanak tanır. Örneğin, EU-West-2 bölgesinde barındırılan bir web siteniz var, ancak müşterilerinizin çoğu ABD veya Avustralya'daysa, İngiltere'deki kullanıcılara kıyasla daha yüksek gecikmeye (latency) sahip olacaklardır. Ancak içeriği ABD ve Avustralya'daki edge location'larda onlara daha yakın bölgelerde önbelleğe alırsak, gecikmeleri azalacaktır. Amazon CloudFront, müşterilerin düşük gecikme ve yüksek hızla içerik dağıtmasına olanak tanır. Amazon CloudFront, kullandıkça öde hizmetidir. CloudFront kullanırken, dosyalar son kullanıcılara global bir edge location ağı üzerinden teslim edilir.
 
 CloudFront hem statik hem de dinamik içerikle çalışır. Örneğin, Amazon S3 Bucket'larında depolanan statik içerikleri depolar, dosyaların kesin sürümünü tutar. Amazon EC2'de depolanan veya Lambda fonksiyonları kullanılarak sunulan dinamik içerikler ile de çalışır. Bu dinamik içerikler, compute kaynağında oluşturulur ve Amazon CloudFront aracılığıyla dağıtılır. CloudFront ile çalışırken, önce bir CloudFront dağıtımı oluşturursunuz. Bu süreç sırasında, bu dağıtımın istemcilere sunacağı içerik için bir veya daha fazla kaynak belirlersiniz. Ayrıca HTTP veya HTTPS gibi kullanılabilecek protokolleri kontrol eden seçenekleri, önbellek yaşam sürelerini, özel başlıkları, bir fiyat sınıfını (tüm edge location'ları mı yoksa location'ların bir alt kümesini mi kullanacağı), AWS WAF web ACL ilişkilendirmelerini, alternatif alan adlarını, özel SSL sertifikalarını ve daha fazlasını yapılandırırsınız. Bir CloudFront dağıtımı oluştururken, size bir alan adı (domain name) atanır.
@@ -209,6 +217,9 @@ CloudFront'un uzun bir güvenlik özellikleri listesi vardır. Bunlar arasında;
  - CloudFront gerçek zamanlı IAM standart logları.
 
 ## Amazon Route 53
+
+![27](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/26e23e1d-dcbf-4d24-845a-0e6e29cff0e2)
+
 
 Bu başlık altında, Amazon Route 53 ile tanışacak ve bu hizmetin bir domain adı kaydetmenize ve dünya çapında yönetmenize nasıl yardımcı olduğunu göreceğiz. Route 53, **domain adı** kaydı ve **Domain Name System (DNS) yönetimi** sağlar. Route 53 ayrıca, domain'iniz için kaynaklara internet **trafiğini yönlendirerek** ve **sağlık kontrolleri** kullanarak kaynaklarınızın beklendiği gibi çalıştığını doğrulayarak trafik yönetimini sağlar.
 
@@ -430,6 +441,9 @@ Genel olarak bir API, işletmeniz için hem içsel hem de dışsal olarak işlev
 
 ## API Gateway
 
+![206](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/a580d9ec-ce06-4d5a-9be3-cab95f1ab700)
+
+
 API'lerle çalışmak ve onları oluşturmak, çoğu geliştirme sürecinin büyük bir parçasıdır. API'ler, müşterilerinizin bilmesine gerek olmayan kodu, servisleri, mimarileri ve tüm küçük detayları soyutlamanıza olanak tanıyan faydalı bir aracıdır. AWS içinde bir API oluşturmanın birçok yolu vardır ve bazıları diğerlerine göre daha karmaşıktır. Örneğin, oluşturmak isteyebileceğiniz herhangi bir backend servisi için API görevi görebilecek bir EC2 instance üzerinde bir Node.js sunucusu çalıştırabilirsiniz. Ancak bu, biraz bilgi birikimi gerektirir ve normalde bir AWS Managed Service'in sizin için yapacağı patch, güvenlik ve diğer faydalarla sizin uğraşmanızı gerektirir.
 
 AWS, API'leri AWS içinde oluşturma, yayınlama, izleme, güvence altına alma ve bakımını yapma konularında yardımcı olan **Amazon API Gateway** adında tamamen yönetilen bir servis oluşturdu. Bu servis her ölçekte oldukça iyi çalışır ve backend'de serverless, genel web uygulamaları ve hatta container'lı iş yüklerini destekleyebilir. API'lerinizi genel kullanım, özel kullanım veya hatta üçüncü taraf geliştiriciler için oluşturabilirsiniz. En iyi yanı ise tamamen serverless olması, herhangi bir altyapı yönetmenizi gerektirmemesi ve sadece kullandığınız kadar ödeme yapmanızdır. Servis ayrıca yüz binlerce eşzamanlı isteği kabul edip işleyebilir, işler kontrolden çıkmaya başlarsa API Gateway tüm trafiği izleyebilir ve istekleri istenildiği gibi throttle'layabilir yani kısıtlayabilir.
@@ -588,6 +602,9 @@ Son olarak, aslında çoğu kullanıcı için en önemlisi olabilir. Bu iki API 
 Görselde REST API için maliyetleri görebilirsiniz, ilk 300 milyon civarı API çağrısı 3,50 dolar maliyete sahip. Kullanım arttıkça fiyat düşer. Ancak fark etmiş olmalısınız ki, bu fiyatı gerçekten düşürmek için milyarlarca çağrı yapmanız gerekecek. Bunu HTTP API ile karşılaştırırsak, fiyatın zaten REST API'nin en ucuz modelinden bile çok daha düşük olduğunu görebilirsiniz. Yani oldukça fazla şeyden vazgeçiyorsunuz, ancak bununla başa çıkabiliyorsanız ve oldukça büyük bir tasarruf elde edebilirsiniz. Bununla beraber, HTTP API ile daha fazla hacmin sadece %10'luk bir indirim olduğunu belirtmekte fayda var.
 
 ## Elastic Load Balancer (ELB)
+
+![38](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/c3ae023c-defe-4fb7-ae3a-e90b3242a76a)
+
 
 Elastic Load Balancer'ın (genellikle ELB olarak anılır) ana işlevi, hedeflenen bir kaynak grubuna gelen isteklerin akışını yönetmek ve kontrol etmek için bu istekleri hedef kaynak grubuna eşit bir şekilde dağıtmaktır. Bu hedefler, bir dizi EC2 instance'ı, Lambda fonksiyonları, bir dizi IP adresi ve hatta Container'lar olabilir. ELB içinde tanımlanan hedefler, ek dayanıklılık için farklı Availability Zone'larda (Erişilebilirlik Bölgeleri) bulunabilir veya tek bir Availability Zone içinde yer alabilir.
 

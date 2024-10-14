@@ -2,27 +2,16 @@
 
 Bu başlık altında, siz geliştiriciler için AWS'deki geliştirici araçlarına bir giriş sağlamaktır. Bu araçlar şu şekilde listelenebilir:
 
-- AWS Amplify,
-    
--   AWS Cloud9,
-    
--   AWS CloudShell,
-    
--   AWS CodeArtifact,
-    
--   AWS CodeBuild,
-    
--   AWS CodeCommit,
-    
--   AWS CodeDeploy,
-    
--   Amazon CodeGuru,
-    
--   AWS CodePipeline,
-    
--   AWS CodeStar, 
-    
--   AWS X-Ray.
+-   [AWS Amplify](#aws-amplify),
+-   [AWS Cloud9](#aws-cloud9),
+-   [AWS CloudShell](#aws-cloudshell),
+-   [AWS CodeCommit](#aws-codecommit),
+-   [AWS CodeBuild](#aws-codebuild), 
+-   [AWS CodeDeploy](#aws-codedeploy),
+-   [AWS CodePipeline](#aws-codepipeline)
+-   [AWS CodeStar](#aws-codestar),
+-   [AWS X-Ray](#aws-x-ray)
+ 
 
 ## CI Nedir? (What is CI?)
 
@@ -715,6 +704,8 @@ Birkaç container seçeneğinden bahsedelim.
 
 ## AWS Amplify
 
+![210](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/ebf301b6-0956-4fb6-8e77-0a8f32ce7c1a)
+
 AWS Amplify, AWS üzerinde full-stack uygulama geliştirme için bir dizi araç ve hizmet sunar, AWS hizmetlerini kullanan ve iOS, Android, React Native veya web üzerinde çalışan uygulamaları yapılandırmanıza, deploy etmenize ve barındırmanıza olanak tanır.
 
 Amplify'ın araçları, uygulamanızın backend'ini oluşturmanıza yardımcı olmak için kütüphaneler, kullanıcı arayüzü bileşenleri ve bir komut satırı arayüzü (CLI) içeren açık kaynaklı bir framework'ü içerir. Hatta kimlik doğrulama, analitik, çevrimdışı veri ve push bildirimleri için yerleşik destek içerir.
@@ -728,6 +719,8 @@ AWS Amplify tarafından sunulan diğer bazı özellikler şu şekilde listeleneb
 -   Uygulamalarınızı gerçek iOS ve Android cihazlarında ve farklı web tarayıcılarında test etmenize olanak tanıyan AWS Device Farm ile entegrasyon.
 
 ## AWS Cloud9
+
+![64](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/41aa6924-9355-4b47-a66e-ab19facd490d)
 
 Bu başlık altında, bulut tabanlı bir IDE olan AWS Cloud9 hizmetini inceleyeceğiz. IDE'lere yani entegre geliştirme ortamlarına aşina değilseniz, bu basitçe kodunuzu yazmanıza ve hata ayıklamanıza olanak tanıyan bir uygulamadır.
 
@@ -770,6 +763,8 @@ SSH tabanlı bir geliştirme ortamı kullanırsanız, yine Cloud9 için bir ücr
 
 ## AWS CloudShell
 
+![65](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/3b110742-259e-45e8-9949-c542a302da24)
+
 AWS CloudShell, AWS Management Console içinden AWS CLI'lere ve diğer araçlara güvenli, önceden kimliği doğrulanmış erişim sağlayan tarayıcı tabanlı bir Linux shell deneyimidir. CloudShell, geliştiricilerin ve yöneticilerin önce yerel bir geliştirme ortamı kurmalarına gerek kalmadan AWS servisleriyle etkileşime geçmelerini kolaylaştırır.
 
 CloudShell içinde güvenlik, şu anda AWS konsoluna giriş yapmış olan kullanıcının kimlik bilgilerine dayalı olarak önceden yapılandırılmıştır.
@@ -779,6 +774,8 @@ AWS konsolundan CloudShell'e erişmek için, üst gezinme çubuğundaki CloudShe
 Özetlemek gerekirse, CloudShell, geliştiricilerin ve yöneticilerin şu anda oturum açmış kullanıcı olarak AWS servisleriyle etkileşime geçmelerine ve yerel bir geliştirme ortamı kurmaya gerek kalmadan AWS CLI ve diğer araçlara erişmelerine olanak tanıyan kullanışlı ve güçlü bir araçtır. 
 
 ## AWS CodeCommit
+
+![68](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/2593c3a1-634c-4f59-9ae3-429e22f1152b)
 
 Eğer kod yazmak veya bakımını yapmakla zaman geçirdiyseniz, muhtemelen Git repository'leri ile zaten tanışıksınızdır. Bunlar, birden fazla geliştiricinin birbirlerinin kodlarının üzerine yazmadan aynı kod tabanları üzerinde çalışmasını sağlar ve bir şeyler ters giderse geliştiricilerin kodlarını iyi bir duruma geri döndürmelerine olanak tanıyan versiyonlama sağlar. Bu git repository'leri, Github, GitLab, Bitbucket ve bugünün yıldızı olan AWS CodeCommit gibi kaynak kontrol servislerinde barındırılır.
 
@@ -843,6 +840,8 @@ CodeCommit repository'sinde harekete geçmenin son yolu onay kuralı şablonlar�
 
 
 ## AWS CodeBuild
+
+![67](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/0c91ad3b-28f8-4abc-8814-ccce70161bb8)
 
 AWS CodeBuild, tam yönetilen bir build servisidir. Kaynak kodunuzu derlemek, unit testleri çalıştırmak ve sonunda dağıtılabilecek bir artifact oluşturmak için tasarlanmıştır. Tam yönetilen bir servis olduğu için, kendi build sunucularınızı sağlamanız, ölçeklendirmeniz veya bakımını yapmanız gerekmeden AWS tüm bunları yapar.
 
@@ -946,6 +945,8 @@ Post-build aşamasında, yine iki `echo` komutu çalıştırır, ardından yeni 
 Bu buildspec dosyasıyla aynı dizinde bir `Dockerfile`'ın var olduğu varsayılarak, CodeBuild, Dockerfile içindeki talimatlara göre gerekli Docker image'ını oluşturacaktır.
 
 ## AWS CodeDeploy
+
+![69](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/a0cdd66e-ac60-4392-acdd-3c44d72acc0a)
 
 Diyelim ki bir CI/CD pipeline'ınız var. Bir repository'ye kod commit ediyorsunuz ve sonra bu kodu bir build artifact oluşturmak için kullanıyorsunuz. Peki sonra ne olur? Şimdi, build artifact'ınızı ortamınıza deploy etmeniz gerekiyor.
 
@@ -1073,7 +1074,7 @@ resources:
 			LoadBalancerInfo:
 				ContainerName: "SampleApplicationName"
 				ContainerPort: 80
-# Optional properties
+            # Optional properties
 			PlatformVersion: "LATEST"
 			NetworkConfiguration:
 				AwsvpcConfiguration:
@@ -1089,6 +1090,8 @@ Bu örnekte, hem version hem de hooks bölümü Lambda appspec dosyasıyla aynı
 Bu nedenle resources bölümünde, task definition'ınızı, load balancer'ı, container ve port'u, ayrıca network configuration gibi isteğe bağlı ayarlamaları belirtirsiniz.
 
 ## AWS CodePipeline
+
+![70](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/02cd12cc-5993-4509-9c6a-e89af6583867)
 
 Bu başlık altında, AWS CodePipeline'a kısa bir giriş yapacağız ve yazılımınızın kaynak kodundan yürütülebilir ve deploy edilebilir sürümlere teslimatını düzenlemek için nasıl kullanılabileceğini göstereceğiz. AWS CodePipeline'ın bir CI/CD kurulumunda nerede konuşlandığını göstereceğiz. 
 
@@ -1127,7 +1130,9 @@ Ardından, AWS CodePipeline **CloudWatch Events**'i destekler. Pipeline'larını
 
 CodePipeline içinde oluşturulan pipeline'lar, varsayılan olarak **CodeCommit**'te yeni bir commit tespit edildiğinde otomatik olarak başlatılmak üzere **Amazon CloudWatch Events**'i kullanacak şekilde yapılandırılmıştır. Alternatif olarak, bu davranış, **CodePipeline**'ın bunun yerine kaynak repository'nizde yapılan değişiklikler için periyodik olarak polling yaptığı bir polling mekanizması ile değiştirilebilir.
 
-## AWS CodeStart
+## AWS CodeStar
+
+![71](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/4a0724c2-140c-41d6-bd88-f2a3707c9187)
 
 AWS'nin geliştirme servislerinin her birini manuel olarak tutarlı bir CI/CD iş akışına entegre etmek, çeşitli entegrasyon seçenekleri ve gerekli güvenlik izinleri göz önüne alındığında hem zaman alıcı hem de zorlu olabilir. Bu başlık altında, AWS CodeStar'ın tam bir CI/CD iş akışı oluşturmanın zorluğunu nasıl ortadan kaldırdığını göstereceğiz.
 
@@ -1176,6 +1181,8 @@ CodeStar proje dashboard'unu ve durumunu görüntüleme yeteneği her üç rol t
 Son olarak, AWS CodeStar uzantılar için destek sağlar. Uzantılar, üçüncü taraf tarafından barındırılan verileri CodeStar proje dashboard'unuza entegre etmek için kullanılabilir.
 
 ## AWS X-Ray
+
+![74](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/f472606a-2b5f-4dd0-b4ac-5d48a7153b46)
 
 AWS X-Ray ile, ölçekli olarak çalışan dağıtık sistemler arasında operasyonel içgörüler elde edebilirsiniz. AWS X-Ray, isteklerin farklı servis temas noktalarından geçerken izlerini sağlayarak, dağıtılmış uygulamalarınızın yolları ve performansı hakkında görünürlük sağlar. Sadece isteğin performansını izlemek için değil, aynı zamanda darboğazları ve hataları tanımlamak için de kullanılabilir. X-Ray, bir uygulamayı bileşenlerine ayırmanıza olanak tanıyan yönetilen bir servistir. Şimdi AWS X-Ray'in sağladığı bazı hızlı özellikleri inceleyelim. 
 - Yüksek oranda dağıtılmış uygulamalar içindeki karmaşık ve detaylı servis ilişkilerini görselleştirmenize olanak tanır. 

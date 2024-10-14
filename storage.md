@@ -5,15 +5,16 @@ Bu başlık altındaki bilgiler, özellikle AWS Certified Developer - Associate 
 
 Reponun bu bölümünün amacı, geliştiriciler için AWS'deki depolama hizmetlerine giriş sağlamaktır. Bu hizmetler şunları içerir:
 
--   Amazon Elastic Block Store (Amazon EBS),
--   Amazon Elastic File System (Amazon EFS),
--   Amazon S3,
--   Amazon S3 Glacier.
+-   [Amazon S3](#amazon-s3e-genel-bakış-overview-of-amazon-s3),
+-   [Amazon Elastic Block Store (Amazon EBS)](#amazon-elastic-block-store-ebs),
+-   [Amazon Elastic File System (Amazon EFS)](#amazon-elastic-file-system-efs),
 
 
 AWS Certified Developer - Associate sertifikası, AWS hizmetlerini kullanarak uygulamaları geliştirme, test etme, dağıtma ve hata ayıklama konusunda bilgi ve deneyime sahip geliştirici rolündeki kişiler için tasarlanmıştır.
 
 ## Amazon S3'e Genel Bakış (Overview of Amazon S3)
+
+![](https://private-user-images.githubusercontent.com/54971670/258645943-0a5b57ca-51fd-496a-8066-890e606effd6.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mjg5MDMyNzAsIm5iZiI6MTcyODkwMjk3MCwicGF0aCI6Ii81NDk3MTY3MC8yNTg2NDU5NDMtMGE1YjU3Y2EtNTFmZC00OTZhLTgwNjYtODkwZTYwNmVmZmQ2LmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDE0VDEwNDkzMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWQ1ZjA4MjM4ZGNmYjA3YTBmODk0M2RhOWMyYTU1YTE2MGY3NjI5YThlYmMxNjliMWFhYjVmODc4YzFlMzI3NGMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.BYTqFgVhpbePiyx5szbi4HNeZV-yjfpTyQZ6-YcKdis)
 
 Bu başlık altında, Amazon Simple Storage Service'i, yaygın adıyla S3'ü tanıyacağız.  Amazon S3, AWS tarafından sağlanan muhtemelen en yoğun kullanılan depolama hizmetidir. Bunun nedeni, birçok farklı kullanım senaryosuna uygun olması ve birçok AWS hizmetiyle entegre çalışabilmesidir. Amazon S3, tam yönetilen, nesne tabanlı, yüksek kullanılabilirliğe ve dayanıklılığa sahip, oldukça uygun maliyetli ve geniş çapta erişilebilir bir depolama hizmetidir.
 
@@ -931,6 +932,8 @@ Bu yüzden lifecycle konfigürasyonlarınızı ayarlarken, sınırlamaları ve m
 
 ## Amazon Elastic Block Store (EBS)
 
+![](https://private-user-images.githubusercontent.com/54971670/258645939-69ced4eb-6347-410e-8a16-26700d68a6d8.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mjg5MDMyNzAsIm5iZiI6MTcyODkwMjk3MCwicGF0aCI6Ii81NDk3MTY3MC8yNTg2NDU5MzktNjljZWQ0ZWItNjM0Ny00MTBlLThhMTYtMjY3MDBkNjhhNmQ4LmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDE0VDEwNDkzMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTdkMDc0NThlY2RmMGExYWM2YjVlYWMyYjc4MDNiMWQyYTA0MjY1Y2JiOTYxODdkMmNmY2ZmNGMxYjc2MjRiMDAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.hWXXQskp4Q6jaK1iebwTnKZDaNZC7fYNSEUhvWj7LDE)
+
 Bu başlık altında, EC2 instance'lerinize EBS birimleri aracılığıyla depolama sağlayan ve bazı EC2 örnekleriyle kullanılan örnek depolama birimlerinden farklı avantajlar sunan Amazon Elastic Block Store hizmetine daha yakından bakacağız.
 
 EBS, kalıcı ve dayanıklı blok düzeyinde depolama sağlar. Sonuç olarak, EBS volume'leri, örnek depolama volume'lerinde depolanan verilerle karşılaştırıldığında veri yönetimi konusunda çok daha fazla esneklik sunar. EBS volume'leri, EC2 örneklerinize eklenebilir. Özellikle hızla değişen ve belirli bir Saniye Başına Giriş/Çıkış İşlemi (IOPS - Input/Output operations Per Second) oranı gerektirebilecek veriler için kullanılır.
@@ -993,6 +996,8 @@ EBS birimleri ayrıca ihtiyaç duyulduğunda esnek bir şekilde yeniden boyutlan
 Gördüğümüz gibi, EBS, EC2 örnek depolama birimlerine göre bir dizi avantaj sunar. Ancak EBS, tüm depolama gereksinimleri için uygun değildir. Ayrıca, çok yüksek dayanıklılık ve veri depolama kullanılabilirliğine ihtiyaç duyarsanız, Amazon S3 veya EFS'yi (Elastic File System) kullanmak daha uygun olacaktır.
 
 ## Amazon Elastic File System (EFS)
+
+![](https://private-user-images.githubusercontent.com/54971670/258645940-620379ee-43f3-4e13-8fa0-1b060a5ec7c3.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mjg5MDMyNzAsIm5iZiI6MTcyODkwMjk3MCwicGF0aCI6Ii81NDk3MTY3MC8yNTg2NDU5NDAtNjIwMzc5ZWUtNDNmMy00ZTEzLThmYTAtMWIwNjBhNWVjN2MzLmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDE0VDEwNDkzMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTYyYWZiN2Y4YjI1YjE1OGNkYTFiOWJmNzhmZmI5NjUzY2MzMGZiM2JjOGIyNmE5OGQ3MDc5NjljNGQwMTBiZTkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.9-tR6EIV3GACvmp8E2Fs-THXAEEwCU6MrcfbZLh0og0)
 
 EFS hizmetinin AWS depolama dünyasındaki yerine bakarak başlayalım. İlk olarak, AWS depolama tekliflerinin dizisine bakmak ve bunlardan birkaçını karşılaştıralım. AWS'nin bu başlık altında tartışacağımızdan daha fazla depolama çözümü var ve gelecekte muhtemelen daha fazlasını eklemeye devam edecek. Ancak bu aşamada sadece üç farklı hizmete odaklanalım. Bu üçünü seçme nedenimiz, ilk bakışta benzer görünebilmeleri ve birçok kişinin mevcut depolama gereksinimlerine uygun olanı seçmekte kararsız kalabilmesidir.
 
