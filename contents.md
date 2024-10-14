@@ -54,7 +54,7 @@
 	- 📁 [Amazon İlişkisel Veritabanı Hizmeti (Amazon Relational Database Service)](./database.md#amazon-i̇lişkisel-veritabanı-hizmeti-amazon-relational-database-service)
 		- 📄 [Amazon RDS Proxy Nedir (What is Amazon RDS Proxy) ?](./database.md#amazon-rds-proxy-nedir-what-is-amazon-rds-proxy-)
 		- 📄 [Amazon Aurora Yüksek Kullanılabilirlik Seçenekleri (Amazon Aurora High Availability Options)](./database.md#amazon-aurora-yüksek-kullanılabilirlik-seçenekleri-amazon-aurora-high-availability-options)
-		- 📄 [Performansın Önemi (The Importance of Performance)](./database.md#performansın-önemi-the-importance-of-performance)
+		- 📄 [Aurora Serverless)](./database.md#aurora-serverless)
 		- 📄 [Performansın Önemi (The Importance of Performance)](./database.md#performansın-önemi-the-importance-of-performance)
 	- 📁 [Önbelleğe Alma Nedir (What is Caching) ?](./database.md#önbelleğe-alma-nedir-what-is-caching-)
 		- 📄 [ElastiCache Genel Bakış (ElastiCache Overview)](./database.md#elasticache-genel-bakış-elasticache-overview)
