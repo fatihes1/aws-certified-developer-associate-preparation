@@ -2,11 +2,15 @@
 
 Bu başlık altında, geliştiriciler için AWS'deki analiz hizmetlerine giriş yapmaktır. Bu hizmetler arasında:
 
--   Amazon Athena,
--   Amazon Kinesis,
--   Amazon OpenSearch Service, yer almaktadır.
+-   [Amazon Athena](#amazon-athena),
+-   [Amazon Kinesis](#amazon-kinesis),
+-   [Amazon OpenSearch Service](#amazon-opensearch-service),  
+
+yer almaktadır.
 
 ## Amazon Kinesis
+
+![](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/cb55202c-b642-4366-8ccd-17819a4733d6)
 
 Amazon Kinesis, veri akışını AWS bulutuna aktarmanın karmaşıklığını ve maliyetlerini ele almak için tasarlandı. Kinesis, event logs, sosyal medya akışları, tıklama akışı verileri, uygulama verileri ve IoT sensör verileri gibi çeşitli veri akışlarını gerçek zamanlı veya gerçek zamana yakın bir şekilde toplamanıza, işlemenize ve analiz etmenize olanak tanır.
 
@@ -830,7 +834,9 @@ Tampon (buffer) boyutu megabayt cinsindendir ve S3 için 1 megabayt'tan 128 mega
 
 Ayrıca, Kinesis Firehose için, içinden geçen veri miktarı için ödeme yaparsınız. Kinesis Data Firehose genellikle Kinesis Data Stream kayıtlarını AWS depolama hizmetlerine almak için kullanılan teslimat hizmetidir. Kinesis Data Firehose'a mesaj üreticileri Kinesis Data Streams ile sınırlı değildir ve herhangi bir uygulama Kinesis Firehose'un AWS Depolama hizmetlerine teslim etmesi için mesajlar üretebilir. Kinesis Agent, bir kez kurulup yapılandırıldığında, teslimat stream'inize veri toplayan ve gönderen önceden hazırlanmış bir Java uygulamasıdır. Kinesis Agent'ı web sunucuları, günlük sunucuları ve veritabanı sunucuları için Linux sistemlerine kurabilirsiniz. Agent ayrıca GitHub'da da mevcuttur. Amazon Linux, Red Hat Linux ve Microsoft Windows işletim sistemleri desteklenmektedir. Hem Kinesis Data Streams hem de Kinesis Firehose, Kinesis Data Streams, Kinesis Data Firehose, Kinesis Data Analytics ve Kinesis Video Streams'i içeren Kinesis streaming veri platformunun bir parçasıdır.
 
-### Amazon OpenSearch Service
+## Amazon OpenSearch Service
+
+![18](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/f6ed8e44-b3a2-47e4-967e-78ff8757f6f1)
 
 Bu başlık altında, Amazon OpenSearch Service'ine yakından bakacağız. Bu hizmet hem AWS Certified Developer - Associate hem de AWS Certified DevOps Engineer - Professional sınavları için yeni kapsama alındı, bu yüzden biz de bu hizmet ve ne yaptığı hakkında hızlı bir genel bakış yapabiliriz.
 
@@ -846,7 +852,9 @@ OpenSearch ayrıca şu özellikleri de destekler:
 
 Amazon OpenSearch Service'in ayrıca Amazon OpenSearch Serverless olarak bilinen sunucusuz bir seçeneği de vardır. Bu, bir OpenSearch kümesi sağlamak veya yönetmek zorunda kalmadan OpenSearch çalıştırmanıza olanak tanır. Amazon S3 ile aynı veri dayanıklılığını sunar ve yalnızca kullandığınız kaynaklar için ödeme yaparak maliyetleri kontrol etmenizi sağlar.
 
-### Amazon Athena
+## Amazon Athena
+
+![12](https://github.com/fatihes1/AWS-ile-Bulut-Bilisimin-Temelleri/assets/54971670/f7acea74-526c-482a-a4eb-67ca19d4d2df)
 
 Bu başlık altında Amazon Athena'yı göz atacağız. Bu hizmet, AWS Certified Developer - Associate sınavı için yeni kapsama alındı, bu yüzden size bu hizmet ve ne yaptığı hakkında bilgi sahibi olmak faydalı olacaktır.
 
