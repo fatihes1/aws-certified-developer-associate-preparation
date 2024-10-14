@@ -2,9 +2,9 @@
 
 Bu başlık altında, geliştiriciler için AWS'deki analiz hizmetlerine giriş yapmaktır. Bu hizmetler arasında:
 
--   [Amazon Athena](#amazon-athena),
 -   [Amazon Kinesis](#amazon-kinesis),
--   [Amazon OpenSearch Service](#amazon-opensearch-service),  
+-   [Amazon OpenSearch Service](#amazon-opensearch-service),
+-   [Amazon Athena](#amazon-athena),
 
 yer almaktadır.
 
